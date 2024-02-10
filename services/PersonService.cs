@@ -2,7 +2,12 @@ using LMS.Models;
 
 namespace LMS.Services {
     public class PersonService {
-        private static PersonService instance;
+
+        private IList<Person> students;
+        private string? query;
+        private static object _lock = new object();
+        private static PersonService? instance;
+        
         public static PersonService Current {
             get
             {
@@ -13,15 +18,32 @@ namespace LMS.Services {
                 return instance;
             }
         }
-        private IEnumerable<Person> projects;
+        private IEnumerable<Person> Students
+        {
+            get
+            {
+                return students.Where(
+                    s =>
+                        s.Name.ToUpper().Contains(query ?? string.Empty)
+                        || s.Id.ToString() == (query ?? string.Empty));
+            }
+        }
         private PersonService()
         {
-            projects = new List<Person>();
+            students = new List<Person>();
         }
-
-        public IEnumerable<Person> GetByClient(Guid personId)
+        public IEnumerable<Person> Search(string query)
         {
-            return projects.Where(p => p.PersonId == personId);
+            this.query = query;
+            return Students;
+        }
+        public void Add(Person student)
+        {
+            students.Add(student);
+        }
+        public void Delete(Person studentToDelete)
+        {
+            students.Remove(studentToDelete);
         }
     }
 }

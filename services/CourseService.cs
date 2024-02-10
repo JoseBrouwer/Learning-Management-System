@@ -36,7 +36,10 @@ namespace LMS.Services {
         {
             courses = new List<Course>();
         }
-
+        public IEnumerable<Course> GetByStudentId(Guid personId)
+        {
+            return courses.Where(c => c.PersonId == personId);
+        }
         public void Add(Course course) {
             courses.Add(course);
         }

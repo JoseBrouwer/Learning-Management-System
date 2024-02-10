@@ -14,8 +14,7 @@ namespace LMS.Models {
         public Years? Classification { get; set; } //Freshman, Sophomore, etc...
         public double? Grades { get; set; }
         public List<Course>? Courses { get; set; }
-        public Guid Id { get; }
-        public Guid PersonId { get; private set; }
+        public Guid Id { get; set; }
 
         public Person(string? name, Years? classification, double? grades)
         {
@@ -25,7 +24,7 @@ namespace LMS.Models {
             Grades = grades;
             Console.WriteLine("Person Created");
             Grades = grades;
-            PersonId = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         public void ListStudentCourses() //Lists every Course in the Courses
         {

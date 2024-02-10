@@ -1,9 +1,11 @@
 using LMS.Models;
+using LMS.Services;
 
 namespace LMS.Helpers 
 {
     public static class CourseHelper
     {
+
         public static int UserInput()
         {
             var select = -1;
