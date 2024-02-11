@@ -45,24 +45,49 @@ namespace LMS.Helpers
             Console.WriteLine("ALL STUDENTS: ");
             personService.Students.ToList().ForEach(Console.WriteLine);
         }
-        public static void AddStudent(List<Person> students, List<Course> courses)
+        /* If there are students you can select one and add them
+         * to a course. If there are none you will be prompted to create one.
+         * BUG: If both 'student' and 'course' return Null there is no breaking out of the loop
+         *      Fix when transitionaing from CLI to GUI
+         */
+        public void AddStudent()
         {
             Person student = null;
             Course course = null;
             PersonHelper personHelper = new PersonHelper();
-            do
+            CourseHelper courseHelper = new CourseHelper();
+            bool enrolled = false;
+            
+            if(personService.Students.Count() > 0) 
             {
                 personHelper.ListStudents();
-                student = personHelper.FindStudent();
-                CourseHelper courseHelper = new CourseHelper();
-                courseHelper.ListCourses();
-                course = courseHelper.FindCourse();
-            }while(student == null || course == null);
-            student.Courses?.Add(course);
-            course.Roster?.Add(student);
-            Console.WriteLine($"Student {student.Name} added to course {course.Code}: {course.Name}");
+                do
+                {
+                    student = personHelper.FindStudent();
+                    courseHelper.ListCourses();
+                    course = courseHelper.FindCourse();
+                    if (course == null || student == null) //if either is null skip work below
+                        continue;
+                    if (student.Courses?.Contains(course) == true
+                        && course.Roster?.Contains(student) == true)
+                    {
+                        Console.WriteLine($"Student {student.Name} already enrolled in {course.Code}: {course.Name}");
+                        enrolled = true;
+                    }
+                    else
+                        enrolled = false;
+                } while (student == null || course == null || enrolled == true);
+                student.Courses?.Add(course);
+                course.Roster?.Add(student);
+                Console.WriteLine($"Student {student.Name} added to course {course.Code}: {course.Name}");
+            }
+            else
+            {
+                Console.WriteLine("There are no Students. Please create a Student first.");
+            }
         }
-        public static void RemoveStudent(List<Person> students, List<Course> courses)
+        // If a student exists and has courses, remove them from a course.
+        public void RemoveStudent()
         {
             Person student = null;
             Course course = null;
@@ -72,12 +97,22 @@ namespace LMS.Helpers
             {
                 personHelper.ListStudents();
                 student = personHelper.FindStudent();
+                if (student == null) //check student was assigned
+                    return;
+                else if (student.Courses.Count() == 0) //check student has courses
+                {
+                    Console.WriteLine("Student is not currently enrolled" +
+                        " in any courses.");
+                    return;
+                }
                 foreach(var c in student?.Courses)
                 {
                     Console.WriteLine($"{c.Code}: {c.Name}");
                 }
                 course = courseHelper.FindCourse();
-                if(course.Roster?.Contains(student) == false)
+                if (course == null) //Check if user returned without finding a course
+                    return;
+                else if(course.Roster?.Contains(student) == false) //Student enrolled?
                 {
                     Console.WriteLine("Student is not enrolled in that course. Try again.");
                     student = null;
@@ -87,12 +122,12 @@ namespace LMS.Helpers
                 {
                     break;
                 }
-            }while(student == null || course == null);
+            }while(student == null || course == null); //Either student or course was not set
             student.Courses?.Remove(course);
             course.Roster?.Remove(student);
             Console.WriteLine($"Student {student.Name} removed from course {course.Code}: {course.Name}");
         }
-        public static void ListStudentCourses(Person student)
+        public void ListStudentCourses(Person student)
         {
             int i = 0;
             if (student.Courses != null && student.Courses.Count != 0)
@@ -108,6 +143,11 @@ namespace LMS.Helpers
                 Console.WriteLine("No courses found for the selected student.");
             }
         }
+        /* Search for a student with "FirstOrDefault" by
+         * inputting name or Id.
+         * Can cancel search.
+         * Returns studnet object
+         */
         public Person FindStudent()
         {
             Console.Write("Search for a Student by Name or Id: ");
@@ -125,7 +165,7 @@ namespace LMS.Helpers
                     Console.WriteLine("Student not found. " + 
                         "Please try again, or enter 'cancel' to stop searching");
                 }
-                else if (student == null && query=="cancel")
+                else if (student == null && query == "cancel")
                     Console.WriteLine("Cancelling...");
                 else
                 {
@@ -136,7 +176,7 @@ namespace LMS.Helpers
 
             return student;
         }
-        public static void UpdateStudent(List<Person> students, List<Course> courses)
+        public void UpdateStudent()
         {
             PersonHelper personHelper = new PersonHelper();
             Person student = personHelper.FindStudent();
@@ -183,10 +223,10 @@ namespace LMS.Helpers
                                 switch (choice)
                                 {
                                     case 1:
-                                        AddStudent(students, courses ?? new List<Course>());
+                                        personHelper.AddStudent();
                                         break;
                                     case 2:
-                                        RemoveStudent(students, courses ?? new List<Course>());
+                                        personHelper.RemoveStudent();
                                         break;
                                     default:
                                         Console.WriteLine("Invalid selection, try again.");

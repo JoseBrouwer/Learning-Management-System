@@ -72,6 +72,10 @@ namespace LMS.Helpers
             Console.WriteLine("ALL COURSES: ");
             courseService.Courses.ToList().ForEach(Console.WriteLine);
         }
+        /* Search for a course by Description, Code, or Name
+         * Can cancel the search.
+         * Returns a course object
+         */
         public Course FindCourse()
         {
             Console.WriteLine("Search for a course by code, name, or Description:");

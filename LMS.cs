@@ -144,10 +144,10 @@ namespace LMS //Learning Management System
                                     personHelper.CreateStudent();
                                     break;
                                 case 2:
-                                    PersonHelper.AddStudent(students, courses);
+                                    personHelper.AddStudent();
                                     break;
                                 case 3:
-                                    PersonHelper.RemoveStudent(students, courses);
+                                    personHelper.RemoveStudent();
                                     break;
                                 case 4:
                                     Person student = personHelper.FindStudent();
@@ -158,10 +158,10 @@ namespace LMS //Learning Management System
                                 case 6:
                                     Person foundStudent = personHelper.FindStudent();
                                     if (foundStudent != null)
-                                        PersonHelper.ListStudentCourses(foundStudent);
+                                        personHelper.ListStudentCourses(foundStudent);
                                     break;
                                 case 7:
-                                    PersonHelper.UpdateStudent(students, courses);
+                                    personHelper.UpdateStudent();
                                     break;
                                 case 8:
                                     StudentMenu();
