@@ -28,7 +28,7 @@ namespace LMS.Helpers
             } while (select < 0);
             return select;
         }
-        public static void CreateStudent(List<Person> students)
+        public void CreateStudent()
         {
             Console.Write("* Student Name: ");
             var name = Console.ReadLine();
@@ -38,28 +38,22 @@ namespace LMS.Helpers
             var year = (Person.Years)UserInput();
             Console.Write("* Student Grade: ");
             var grade = UserInput();
-            
-            //Person student = new Person(name, year, grade);
-            //students.Add(student); //add student to the list
+            personService.Add(new Person(name, year, grade));
         }
-        public static void ListStudents(List<Person> students)
+        public void ListStudents()
         {
             Console.WriteLine("ALL STUDENTS: ");
-            foreach (var student in students)
-            {
-                //0. Jose Brouwer: Senior
-                //Use of "i" is cleaner than ID for listing
-                Console.WriteLine($"* {student.Name}: {student.Classification}, {student.Grades}");
-            }
+            personService.Students.ToList().ForEach(Console.WriteLine);
         }
         public static void AddStudent(List<Person> students, List<Course> courses)
         {
             Person student = null;
             Course course = null;
+            PersonHelper personHelper = new PersonHelper();
             do
             {
-                ListStudents(students);
-                student = FindStudent(students);
+                personHelper.ListStudents();
+                student = personHelper.FindStudent();
                 CourseHelper courseHelper = new CourseHelper();
                 courseHelper.ListCourses();
                 course = courseHelper.FindCourse();
@@ -73,10 +67,11 @@ namespace LMS.Helpers
             Person student = null;
             Course course = null;
             CourseHelper courseHelper = new CourseHelper();
+            PersonHelper personHelper = new PersonHelper();
             do
             {
-                ListStudents(students);
-                student = FindStudent(students);
+                personHelper.ListStudents();
+                student = personHelper.FindStudent();
                 foreach(var c in student?.Courses)
                 {
                     Console.WriteLine($"{c.Code}: {c.Name}");
@@ -113,32 +108,38 @@ namespace LMS.Helpers
                 Console.WriteLine("No courses found for the selected student.");
             }
         }
-        public static Person FindStudent(List<Person> students)
+        public Person FindStudent()
         {
-            Console.Write("Search for a student by name: ");
-            var query = Console.ReadLine();
-            query = query?.Trim();
-            query = query?.ToUpper();
-            var student = students.Find(x => x.Name == query);
-            while (student == null && query != null)
+            Console.Write("Search for a Student by Name or Id: ");
+            String query;
+            Person student;
+            do
             {
-                Console.WriteLine("Student not found, try again.\n Enter 'cancel' to cancel.");
-                query = Console.ReadLine();
-                query = query?.Trim();
-                if (query == "cancel")
-                    break;
-                student = students.Find(x => x.Name == query);
-            }
-            Console.WriteLine($"Student found:");
-            if (student == null)
-                Console.WriteLine($"\tNONE FOUND");
-            else
-                Console.WriteLine($"{student}");
+                query = Console.ReadLine()?.Trim().ToUpper();
+                student = personService.Students.FirstOrDefault(x =>
+                    ((x.Name?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false) == true)
+                    || (x.Id.ToString().Equals(query, StringComparison.OrdinalIgnoreCase))
+                    );
+                if (student == null && query != "cancel")
+                {
+                    Console.WriteLine("Student not found. " + 
+                        "Please try again, or enter 'cancel' to stop searching");
+                }
+                else if (student == null && query=="cancel")
+                    Console.WriteLine("Cancelling...");
+                else
+                {
+                    Console.WriteLine("Student found:");
+                    Console.WriteLine(student);
+                }
+            } while (student == null && query != "cancel");
+
             return student;
         }
         public static void UpdateStudent(List<Person> students, List<Course> courses)
         {
-            Person student = FindStudent(students);
+            PersonHelper personHelper = new PersonHelper();
+            Person student = personHelper.FindStudent();
             if (student != null)
             {
                 var select = -1;

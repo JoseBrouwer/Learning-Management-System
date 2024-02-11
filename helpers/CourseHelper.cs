@@ -40,8 +40,6 @@ namespace LMS.Helpers
             Console.Write("* Course Description: ");
             var desc = Console.ReadLine();
             courseService.Add(new Course(code, name, desc));
-            //Course theCourse = new Course(code, name, desc); //construct course
-            //courses.Add(theCourse); //add course to list
         }
         public void DeleteCourse()
         {
@@ -78,20 +76,29 @@ namespace LMS.Helpers
         {
             Console.WriteLine("Search for a course by code, name, or Description:");
             Console.WriteLine("NOTE: Description is case-sensitive and can search by substring.");
-            var query = Console.ReadLine()?.Trim();
-            var course = courseService.Courses.FirstOrDefault(x =>
-                (x.Description?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (x.Code?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (x.Name?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false));
-            if (course == null)
+            Course course;
+            String query;
+            do
             {
-                Console.WriteLine("Course not found.");
-            }
-            else
-            {
-                Console.WriteLine("Course found:");
-                Console.WriteLine(course);
-            }
+                query = Console.ReadLine()?.Trim();
+                course = courseService.Courses.FirstOrDefault(x =>
+                    (x.Description?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false)
+                    || (x.Code?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false)
+                    || (x.Name?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false)
+                    );
+                if (course == null && query != "cancel")
+                {
+                    Console.WriteLine("Course not found. " +
+                        "Please try again, or enter 'cancel' to stop searching. ");
+                }
+                else if (course == null && query == "cancel")
+                    Console.WriteLine("Cancelling...");
+                else
+                {
+                    Console.WriteLine("Course found:");
+                    Console.WriteLine(course);
+                }
+            } while (course == null && query != "cancel");
 
             return course;
         }

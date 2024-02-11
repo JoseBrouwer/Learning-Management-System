@@ -4,6 +4,7 @@ namespace LMS.Services {
     public class PersonService {
 
         private IList<Person> students;
+        private IList<Course> courses;
         private string? query;
         private static object _lock = new object();
         private static PersonService? instance;
@@ -18,7 +19,7 @@ namespace LMS.Services {
                 return instance;
             }
         }
-        private IEnumerable<Person> Students
+        public IEnumerable<Person> Students
         {
             get
             {
@@ -31,6 +32,7 @@ namespace LMS.Services {
         private PersonService()
         {
             students = new List<Person>();
+            courses = new List<Course>();
         }
         public IEnumerable<Person> Search(string query)
         {
@@ -41,9 +43,17 @@ namespace LMS.Services {
         {
             students.Add(student);
         }
+        public void AddCourse(Course course)
+        {
+            courses.Add(course);
+        }
         public void Delete(Person studentToDelete)
         {
             students.Remove(studentToDelete);
+        }
+        public void DeleteCourse(Course courseToDelete)
+        {
+            courses.Remove(courseToDelete);
         }
     }
 }

@@ -74,6 +74,7 @@ namespace LMS //Learning Management System
             List<Course> courses = new List<Course>(); //list of courses
             List<Person> students = new List<Person>(); //list of students
             var courseHelper = new CourseHelper();
+            var personHelper = new PersonHelper();
 
             var input = -1;
             MainMenu();
@@ -140,7 +141,7 @@ namespace LMS //Learning Management System
                             switch (input)
                             {
                                 case 1:
-                                    PersonHelper.CreateStudent(students);
+                                    personHelper.CreateStudent();
                                     break;
                                 case 2:
                                     PersonHelper.AddStudent(students, courses);
@@ -149,13 +150,13 @@ namespace LMS //Learning Management System
                                     PersonHelper.RemoveStudent(students, courses);
                                     break;
                                 case 4:
-                                    Person student = PersonHelper.FindStudent(students);
+                                    Person student = personHelper.FindStudent();
                                     break;
                                 case 5:
-                                    PersonHelper.ListStudents(students);
+                                    personHelper.ListStudents();
                                     break;
                                 case 6:
-                                    Person foundStudent = PersonHelper.FindStudent(students);
+                                    Person foundStudent = personHelper.FindStudent();
                                     if (foundStudent != null)
                                         PersonHelper.ListStudentCourses(foundStudent);
                                     break;
