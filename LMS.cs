@@ -17,7 +17,7 @@ namespace LMS //Learning Management System
             Console.WriteLine("2. Students");
             Console.WriteLine("3. Display this menu");
             Console.WriteLine("4. Exit");
-            Console.WriteLine("------------------------------------------");
+            //Console.WriteLine("------------------------------------------");
         }
         public static void CourseMenu()
         {
@@ -34,7 +34,7 @@ namespace LMS //Learning Management System
             Console.WriteLine("9. List all assignments for a Course");
             Console.WriteLine("10. Display this menu");
             Console.WriteLine("11. Back to main menu");
-            Console.WriteLine("------------------------------------------");
+            //Console.WriteLine("------------------------------------------");
         }
         public static void StudentMenu()
         {
@@ -49,7 +49,7 @@ namespace LMS //Learning Management System
             Console.WriteLine("7. Update a Student's information");
             Console.WriteLine("8. Display this menu");
             Console.WriteLine("9. Back to main menu");
-            Console.WriteLine("------------------------------------------");
+            //Console.WriteLine("------------------------------------------");
         }
         public static int UserInput()
         {
@@ -73,6 +73,8 @@ namespace LMS //Learning Management System
         {
             List<Course> courses = new List<Course>(); //list of courses
             List<Person> students = new List<Person>(); //list of students
+            var courseHelper = new CourseHelper();
+
             var input = -1;
             MainMenu();
             do
@@ -92,31 +94,31 @@ namespace LMS //Learning Management System
                             switch (input)
                             {
                                 case 1:
-                                    CourseHelper.CreateCourse(courses);
+                                    courseHelper.CreateCourse();
                                     break;
                                 case 2: 
-                                    CourseHelper.DeleteCourse(courses);
+                                    courseHelper.DeleteCourse();
                                     break;
                                 case 3:
-                                    Course course = CourseHelper.FindCourse(courses);
+                                    Course course = courseHelper.FindCourse();
                                     break;
                                 case 4:
-                                    CourseHelper.ListCourses(courses);
+                                    courseHelper.ListCourses();
                                     break;
                                 case 5:
-                                    CourseHelper.FindCourse(courses).ListPeople();
+                                    courseHelper.FindCourse().ListPeople();
                                     break;
                                 case 6:
-                                    CourseHelper.UpdateCourse(courses);
+                                    courseHelper.UpdateCourse();
                                     break;
                                 case 7:
-                                    CourseHelper.CreateAssignment(courses);
+                                    courseHelper.CreateAssignment();
                                     break;
                                 case 8: 
-                                    CourseHelper.RemoveAssignment(courses);
+                                    courseHelper.RemoveAssignment();
                                     break;
                                 case 9: 
-                                    CourseHelper.ListAssignments(courses);
+                                    courseHelper.ListAssignments();
                                     break;
                                 case 10:
                                     CourseMenu();
@@ -125,7 +127,7 @@ namespace LMS //Learning Management System
                                     MainMenu();
                                     break;
                             }
-                            Console.WriteLine("------------------------------------------");
+                           // Console.WriteLine("------------------------------------------");
                         }while(input != 11);
                         break;
                     case 2:
@@ -167,14 +169,14 @@ namespace LMS //Learning Management System
                                     MainMenu();
                                     break;
                             }
-                            Console.WriteLine("------------------------------------------");
+                            //Console.WriteLine("------------------------------------------");
                         }while(input != 9);
                         break;
                     case 3:
                         MainMenu();
                         break;
                 }
-                Console.WriteLine("------------------------------------------");
+                //Console.WriteLine("------------------------------------------");
             }while(input != 4);
         }
     } 

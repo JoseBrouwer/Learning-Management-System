@@ -3,8 +3,11 @@ using LMS.Services;
 
 namespace LMS.Helpers 
 {
-    public static class CourseHelper
+    public class CourseHelper
     {
+        private CourseService courseService = CourseService.Current;
+
+        public CourseHelper() { }
 
         public static int UserInput()
         {
@@ -26,7 +29,7 @@ namespace LMS.Helpers
             } while (select < 0);
             return select;
         }
-        public static void CreateCourse(List<Course> courses)
+        public void CreateCourse()
         {
             Console.Write("* Course Code: ");
             var code = Console.ReadLine();
@@ -36,13 +39,15 @@ namespace LMS.Helpers
             name = name?.ToUpper();
             Console.Write("* Course Description: ");
             var desc = Console.ReadLine();
-            Course theCourse = new Course(code, name, desc); //construct course
-            courses.Add(theCourse); //add course to list
+            courseService.Add(new Course(code, name, desc));
+            //Course theCourse = new Course(code, name, desc); //construct course
+            //courses.Add(theCourse); //add course to list
         }
-        public static void DeleteCourse(List<Course> courses)
+        public void DeleteCourse()
         {
-            ListCourses(courses);
-            Course course = FindCourse(courses);
+            CourseHelper courseHelper = new CourseHelper();
+            courseHelper.ListCourses();
+            Course course = FindCourse();
             if (course != null)
             {
                 Console.WriteLine("Are you sure you want to delete this course? (y/n)");
@@ -51,7 +56,7 @@ namespace LMS.Helpers
                 select = select?.ToLower();
                 if (select == "y" || select == "yes")
                 {
-                    courses.Remove(course);
+                    courseService.Delete(course);
                     Console.WriteLine("Course deleted.");
                 }
                 else
@@ -64,51 +69,38 @@ namespace LMS.Helpers
                 Console.WriteLine("Course not found.");
             }
         }
-        public static void ListCourses(List<Course> courses)
+        public void ListCourses()
         {
             Console.WriteLine("ALL COURSES: ");
-            foreach (var course in courses)
-                Console.WriteLine($"* {course.Code}: {course.Name}");
-            Console.WriteLine("\n");
+            courseService.Courses.ToList().ForEach(Console.WriteLine);
         }
-        public static Course FindCourse(List<Course> courses)
+        public Course FindCourse()
         {
             Console.WriteLine("Search for a course by code, name, or Description:");
             Console.WriteLine("NOTE: Description is case-sensitive and can search by substring.");
-            var query = Console.ReadLine();
-            query = query?.Trim();
-            var course = courses.Find(x => x.Description != null && x.Description.Contains(query));
+            var query = Console.ReadLine()?.Trim();
+            var course = courseService.Courses.FirstOrDefault(x =>
+                (x.Description?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false)
+                || (x.Code?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false)
+                || (x.Name?.Equals(query, StringComparison.OrdinalIgnoreCase) ?? false));
             if (course == null)
             {
-                query = query.ToUpper();
-                course = courses.Find(x => x.Code == query || x.Name == query);
+                Console.WriteLine("Course not found.");
             }
-            while(course == null && query != null)
-            {
-                Console.WriteLine("Course not found, try again.\nEnter 'cancel' to cancel.");
-                query = Console.ReadLine();
-                query = query?.Trim();
-                if (query == "cancel")
-                    break;
-                course = courses.Find(x => x.Description != null && x.Description.Contains(query));
-                if (course == null)
-                {
-                    query = query.ToUpper();
-                    course = courses.Find(x => x.Code == query || x.Name == query);
-                }
-            }
-            Console.WriteLine($"Course(s) found:");
-            if(course == null)
-                Console.WriteLine($"\tNONE FOUND");
             else
-                Console.WriteLine($"{course}");
-            return course; //null handled in main
+            {
+                Console.WriteLine("Course found:");
+                Console.WriteLine(course);
+            }
+
+            return course;
         }
-        public static void UpdateCourse(List<Course> courses)
+        public void UpdateCourse()
         {
-            ListCourses(courses);
+            CourseHelper courseHelper = new CourseHelper();
+            courseHelper.ListCourses();
             Console.Write("Name, Code, or Description of Course: ");
-            Course course = FindCourse(courses);
+            Course course = courseHelper.FindCourse();
             if (course != null)
             {
                 Console.WriteLine($"Course found: {course.Code}: {course.Name}");
@@ -143,10 +135,10 @@ namespace LMS.Helpers
                             course.Description = desc;
                             break;
                         case 4:
-                            CreateAssignment(courses);
+                            courseHelper.CreateAssignment();
                             break;
                         case 5:
-                            RemoveAssignment(courses);
+                            courseHelper.RemoveAssignment();
                             break;
                         case 6:
                             break;
@@ -162,10 +154,11 @@ namespace LMS.Helpers
                 Console.WriteLine("Course not found.");
             }
         }
-        public static void CreateAssignment(List<Course> courses)
+        public void CreateAssignment()
         {
-            ListCourses(courses);
-            Course course = FindCourse(courses);
+            CourseHelper courseHelper = new CourseHelper();
+            courseHelper.ListCourses();
+            Course course = courseHelper.FindCourse();
             if (course != null)
             {
                 Console.Write("Assignment Name: ");
@@ -196,10 +189,11 @@ namespace LMS.Helpers
                 Console.WriteLine("Course not found.");
             }
         }
-        public static void RemoveAssignment(List<Course> courses)
+        public void RemoveAssignment()
         {
-            ListCourses(courses);
-            Course course = FindCourse(courses);
+            CourseHelper courseHelper = new CourseHelper();
+            courseHelper.ListCourses();
+            Course course = courseHelper.FindCourse();
             if (course != null)
             {
                 Console.WriteLine("Select an Assignment to remove:");
@@ -232,10 +226,11 @@ namespace LMS.Helpers
                 Console.WriteLine("Course not found.");
             }
         }
-        public static void ListAssignments(List<Course> courses)
+        public void ListAssignments()
         {
-            ListCourses(courses);
-            Course course = FindCourse(courses);
+            CourseHelper courseHelper = new CourseHelper();
+            courseHelper.ListCourses();
+            Course course = courseHelper.FindCourse();
             if (course != null)
             {
                 Console.WriteLine("Assignments:");

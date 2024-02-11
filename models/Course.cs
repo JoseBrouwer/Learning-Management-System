@@ -1,3 +1,5 @@
+using LMS.Models;
+
 namespace LMS.Models {
     public class Course
     {

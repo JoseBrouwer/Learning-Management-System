@@ -1,9 +1,15 @@
 using LMS.Models;
+using LMS.Helpers;
+using LMS.Services;
 
 namespace LMS.Helpers
 {
-    public static class PersonHelper
+    public class PersonHelper
     {
+        private PersonService personService = PersonService.Current;
+
+        public PersonHelper() { }
+
         public static int UserInput()
         {
             var select = -1;
@@ -32,8 +38,9 @@ namespace LMS.Helpers
             var year = (Person.Years)UserInput();
             Console.Write("* Student Grade: ");
             var grade = UserInput();
-            Person student = new Person(name, year, grade);
-            students.Add(student); //add student to the list
+            
+            //Person student = new Person(name, year, grade);
+            //students.Add(student); //add student to the list
         }
         public static void ListStudents(List<Person> students)
         {
@@ -53,8 +60,9 @@ namespace LMS.Helpers
             {
                 ListStudents(students);
                 student = FindStudent(students);
-                CourseHelper.ListCourses(courses);
-                course = CourseHelper.FindCourse(courses);
+                CourseHelper courseHelper = new CourseHelper();
+                courseHelper.ListCourses();
+                course = courseHelper.FindCourse();
             }while(student == null || course == null);
             student.Courses?.Add(course);
             course.Roster?.Add(student);
@@ -64,6 +72,7 @@ namespace LMS.Helpers
         {
             Person student = null;
             Course course = null;
+            CourseHelper courseHelper = new CourseHelper();
             do
             {
                 ListStudents(students);
@@ -72,7 +81,7 @@ namespace LMS.Helpers
                 {
                     Console.WriteLine($"{c.Code}: {c.Name}");
                 }
-                course = CourseHelper.FindCourse(courses);
+                course = courseHelper.FindCourse();
                 if(course.Roster?.Contains(student) == false)
                 {
                     Console.WriteLine("Student is not enrolled in that course. Try again.");
