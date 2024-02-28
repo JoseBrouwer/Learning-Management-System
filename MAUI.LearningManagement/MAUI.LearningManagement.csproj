@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<WindowsPackageType>None</WindowsPackageType>
 		<WindowsAppSDKSelfContained Condition="'$(IsUnpackaged)' == 'true'">true</WindowsAppSDKSelfContained>
@@ -16,17 +17,17 @@
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
 		<OutputType>Exe</OutputType>
-		<RootNamespace>TestApp</RootNamespace>
+		<RootNamespace>MAUI.LearningManagement</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>TestApp</ApplicationTitle>
+		<ApplicationTitle>MAUI.LearningManagement</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.testapp</ApplicationId>
+		<ApplicationId>com.companyname.maui.learningmanagement</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

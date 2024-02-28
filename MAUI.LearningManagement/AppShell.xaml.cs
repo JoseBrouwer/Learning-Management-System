@@ -1,4 +1,4 @@
-﻿namespace TestApp
+﻿namespace MAUI.LearningManagement
 {
     public partial class AppShell : Shell
     {

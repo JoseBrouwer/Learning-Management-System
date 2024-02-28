@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace TestApp
+namespace MAUI.LearningManagement
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

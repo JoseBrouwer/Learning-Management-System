@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace TestApp
+namespace MAUI.LearningManagement
 {
     public class Program
     {
