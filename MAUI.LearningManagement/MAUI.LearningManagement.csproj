@@ -66,6 +66,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\LMS\LMS.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="views\InstructorView.xaml.cs">
 	    <DependentUpon>InstructorView.xaml</DependentUpon>
 	  </Compile>
