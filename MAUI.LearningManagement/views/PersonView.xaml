@@ -8,6 +8,9 @@
             Text="STUDENTS!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <ListView
+            ItemsSource="{Binding Persons}">
+        </ListView>
         <Button Text="Back" Clicked="BackClicked"/>
     </VerticalStackLayout>
 </ContentPage>

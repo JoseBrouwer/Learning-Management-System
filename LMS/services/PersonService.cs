@@ -31,7 +31,14 @@ namespace LMS.Services {
         }
         private PersonService()
         {
-            students = new List<Person>();
+            students = new List<Person>
+            {
+                new Person("TestPerson", (Person.Years?)0, 100),
+                new Person("TestPerson", (Person.Years?)1, 100),
+                new Person("TestPerson", (Person.Years?)2, 100),
+                new Person("TestPerson", (Person.Years?)3, 100),
+                new Person("TestPerson", (Person.Years ?)4, 100),
+            };
             courses = new List<Course>();
         }
         public IEnumerable<Person> Search(string query)
