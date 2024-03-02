@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUI.LearningManagement"
     xmlns:local2="clr-namespace:MAUI.LearningManagement.views"
+    xmlns:local3="clr-namespace:MAUI.LearningManagement.dialogs"
     Shell.FlyoutBehavior="Disabled"
     Title="MAUI.LearningManagement">
 
@@ -20,6 +21,10 @@
         Title="Student"
         ContentTemplate="{DataTemplate local2:PersonView}"
         Route="Person" />
+    <ShellContent
+        Title="Student Details"
+        ContentTemplate="{DataTemplate local3:PersonDialog}"
+        Route="PersonDetail" />
 
 
 </Shell>

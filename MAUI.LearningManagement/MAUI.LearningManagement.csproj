@@ -70,6 +70,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="dialogs\PersonDialog.xaml.cs">
+	    <DependentUpon>PersonDialog.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="views\InstructorView.xaml.cs">
 	    <DependentUpon>InstructorView.xaml</DependentUpon>
 	  </Compile>
@@ -79,6 +82,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="dialogs\PersonDialog.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="views\InstructorView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
