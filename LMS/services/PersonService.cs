@@ -54,6 +54,10 @@ namespace LMS.Services {
         {
             courses.Add(course);
         }
+        public void Remove(Person student)
+        {
+            students.Remove(student);
+        }
         public void Delete(Person studentToDelete)
         {
             students.Remove(studentToDelete);

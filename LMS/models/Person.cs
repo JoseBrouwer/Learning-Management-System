@@ -16,15 +16,15 @@ namespace LMS.Models {
         public List<Course>? Courses { get; set; }
         public Guid Id { get; set; }
 
-        public Person(string? name, Years? classification, double? grades)
+        public Person(string? name = "", Years? classification = 0, double? grades = 0)
         {
             Name = name;
             Classification = classification;
             Courses = new List<Course>();
             Grades = grades;
-            Console.WriteLine("Person Created");
-            Grades = grades;
             Id = Guid.NewGuid();
+            Console.WriteLine("Person Created");
+            
         }
         public void ListStudentCourses() //Lists every Course in the Courses
         {
@@ -49,7 +49,7 @@ namespace LMS.Models {
         }
         public override string ToString()
         {
-            return $"{Name}: {Classification} \n";
+            return $"{Name}: {Classification} : {Grades} \n";
         }
     }
 }

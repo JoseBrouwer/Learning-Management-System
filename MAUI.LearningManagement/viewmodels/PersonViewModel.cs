@@ -32,12 +32,26 @@ namespace MAUI.LearningManagement.viewmodels
                 return new ObservableCollection<Person>(personService.Students);
             }
         }
+        public Person? SelectedPerson
+        {
+            get; set;
+        }
         public void AddPerson()
         {
-            personService?.Add(new Person("Added new student", 0, 100));
+            personService?.Add(new Person());
 
             //Changed property, must notify to ensure it is updated
             NotifyPropertyChanged(nameof(Persons));
+        }
+        public void Refresh()
+        {
+            NotifyPropertyChanged(nameof(Persons));
+
+        }
+        public void Remove()
+        {
+            personService.Remove(SelectedPerson);
+            Refresh();
         }
         public PersonViewModel()
         {
