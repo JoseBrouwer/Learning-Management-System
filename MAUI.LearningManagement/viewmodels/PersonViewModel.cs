@@ -38,7 +38,7 @@ namespace MAUI.LearningManagement.viewmodels
         }
         public void AddPerson()
         {
-            personService?.Add(new Person());
+            personService?.AddOrUpdate(new Person());
 
             //Changed property, must notify to ensure it is updated
             NotifyPropertyChanged(nameof(Persons));

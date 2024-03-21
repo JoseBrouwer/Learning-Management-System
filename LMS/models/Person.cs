@@ -15,6 +15,7 @@ namespace LMS.Models {
         public double? Grades { get; set; }
         public List<Course>? Courses { get; set; }
         public Guid Id { get; set; }
+        public int IntId { get; set; }
 
         public Person(string? name = "", Years? classification = 0, double? grades = 0)
         {

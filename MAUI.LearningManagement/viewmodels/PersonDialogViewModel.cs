@@ -77,7 +77,7 @@ namespace MAUI.LearningManagement.viewmodels
                 }
                 else
                     person.Classification = 0;
-                PersonService.Current.Add(person);
+                PersonService.Current.AddOrUpdate(person);
             }
         }
     }

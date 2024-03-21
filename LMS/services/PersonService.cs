@@ -5,6 +5,14 @@ namespace LMS.Services {
 
         private IList<Person> students;
         private IList<Course> courses;
+        private int LastId //returns last id value assigned
+        {
+            get
+            {
+                //Basically a SQL SELECT on "students" and we return the Max value
+                return students.Select(s => s.IntId).Max();
+            }
+        }
         private string? query;
         private static object _lock = new object();
         private static PersonService? instance;
@@ -46,6 +54,16 @@ namespace LMS.Services {
             this.query = query;
             return Students;
         }
+        public void AddOrUpdate(Person student)
+        {
+            if(student.IntId == 0)
+            {
+                //cant use ++ because LastId doesn't have a set
+                student.IntId = LastId + 1;
+            }
+            students.Add(student);
+        }
+        //Kept for the sake of not breaking Console App
         public void Add(Person student)
         {
             students.Add(student);
