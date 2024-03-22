@@ -63,9 +63,16 @@ namespace MAUI.LearningManagement.viewmodels
                 person.Grades = value; 
             }
         }
-        public PersonDialogViewModel()
+        public PersonDialogViewModel(int pId)
         {
-            person = new Person();
+            if(pId == 0)
+            {
+                person = new Person();
+            }
+            else
+            {
+                person = PersonService.Current.Get(pId) ?? new Person();
+            }
         }
         public void AddPerson()
         {

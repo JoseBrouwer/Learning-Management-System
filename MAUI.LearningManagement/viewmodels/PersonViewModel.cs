@@ -46,7 +46,6 @@ namespace MAUI.LearningManagement.viewmodels
         public void Refresh()
         {
             NotifyPropertyChanged(nameof(Persons));
-
         }
         public void Remove()
         {

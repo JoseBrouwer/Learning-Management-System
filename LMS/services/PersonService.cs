@@ -41,13 +41,17 @@ namespace LMS.Services {
         {
             students = new List<Person>
             {
-                new Person("TestPerson", (Person.Years?)0, 100),
-                new Person("TestPerson", (Person.Years?)1, 100),
-                new Person("TestPerson", (Person.Years?)2, 100),
-                new Person("TestPerson", (Person.Years?)3, 100),
-                new Person("TestPerson", (Person.Years ?)4, 100),
+                new Person{Name = "TestPerson 1", Classification = (Person.Years?)0, Grades = 100, IntId = 1},
+                new Person{Name = "TestPerson 2", Classification = (Person.Years?)1, Grades = 100, IntId = 2},
+                new Person{Name = "TestPerson 3", Classification = (Person.Years?)2, Grades = 100, IntId = 3},
+                new Person{Name = "TestPerson 4", Classification = (Person.Years?)3, Grades = 100, IntId = 4},
+                new Person{Name = "TestPerson 5", Classification = (Person.Years?)4, Grades = 100, IntId = 5},
             };
             courses = new List<Course>();
+        }
+        public Person? Get(int id)
+        {
+            return students.FirstOrDefault(p => p.IntId == id);
         }
         public IEnumerable<Person> Search(string query)
         {
@@ -60,8 +64,11 @@ namespace LMS.Services {
             {
                 //cant use ++ because LastId doesn't have a set
                 student.IntId = LastId + 1;
+
+                //ONLY doesn't create a dupe bc its a local app
+                //CHANGE WHEN IMPLEMENTING SERVICES
+                students.Add(student);
             }
-            students.Add(student);
         }
         //Kept for the sake of not breaking Console App
         public void Add(Person student)

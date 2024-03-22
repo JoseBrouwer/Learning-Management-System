@@ -19,8 +19,19 @@ public partial class PersonView : ContentPage
     {
         //PersonDetail is the PersonDialog page, route in AppShell.xaml
         Shell.Current.GoToAsync("//PersonDetail");
+
         //Example of type coercion using "as" --> Safe Type Conversion
         //(BindingContext as PersonViewModel)?.AddPerson();
+    }
+    private void UpdateClicked(object sender, EventArgs e)
+    {
+        var personId = (BindingContext as PersonViewModel)?.SelectedPerson?.IntId;
+
+        if(personId != null)
+        {
+            Shell.Current.GoToAsync($"//PersonDetail?personId={personId}");
+        }
+        
     }
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)

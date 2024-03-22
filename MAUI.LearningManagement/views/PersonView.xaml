@@ -17,6 +17,7 @@
             >
         </ListView>
         <Button Text="Add" Clicked="AddClicked"/>
+        <Button Text="Update" Clicked="UpdateClicked"/>
         <Button Text="Remove" Clicked="RemoveClicked"/>
         <Button Text="Back" Clicked="BackClicked"/>
     </VerticalStackLayout>

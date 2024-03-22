@@ -25,7 +25,6 @@ namespace LMS.Models {
             Grades = grades;
             Id = Guid.NewGuid();
             Console.WriteLine("Person Created");
-            
         }
         public void ListStudentCourses() //Lists every Course in the Courses
         {
