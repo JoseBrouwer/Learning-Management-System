@@ -43,4 +43,10 @@ public partial class PersonView : ContentPage
     {
         (BindingContext as PersonViewModel)?.Remove();
     }
+
+    private void SearchClicked(object sender, EventArgs e)
+    {
+        //Refresh() updates all properties of the View
+        (BindingContext as PersonViewModel)?.Refresh();
+    }
 }

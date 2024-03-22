@@ -23,13 +23,17 @@ namespace MAUI.LearningManagement.viewmodels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public string Query { get; set; }
+
         public ObservableCollection<Person> Persons 
         {
             get
             {
                 //Explicit call to conversion constructor
                 //NOTE: Use of "Students" and not "Persons"
-                return new ObservableCollection<Person>(personService.Students);
+                return new ObservableCollection<Person>(personService.Students
+                    .ToList().Where(s 
+                    => s?.Name?.ToUpper()?.Contains(Query?.ToUpper() ?? string.Empty) ?? false));
             }
         }
         public Person? SelectedPerson
