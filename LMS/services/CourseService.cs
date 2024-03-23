@@ -48,7 +48,7 @@ namespace LMS.Services
         {
             return courses.Where(c => c.PersonId == personId);
         }
-        public void AddOrUpdate(Course course)
+        public void AddOrUpdate(Course course) //FIX TO HANDLE UPDATING, CREATES DUPES
         {
             if (course.Code == string.Empty)
             {

@@ -21,6 +21,26 @@ public partial class InstructorView : ContentPage
     {
         Shell.Current.GoToAsync("//CourseDetail");
     }
+    private void AddStudentClicked(object sender, EventArgs e)
+    {
+       // Shell.Current.GoToAsync("//AddingStudent");
+    }
+    private void ViewModulesClicked(object sender, EventArgs e)
+    {
+        //Shell.Current.GoToAsync("//ModuleDetail");
+    }
+    private void ViewAssignmentsClicked(object sender, EventArgs e)
+    {
+        //Shell.Current.GoToAsync("//AssignmentDetail");
+    }
+    private void UpdateClicked(object sender, EventArgs e)
+    {
+        //Shell.Current.GoToAsync("//CourseDetail");
+    }
+    private void RemoveClicked(object sender, EventArgs e)
+    {
+       
+    }
     private void SearchClicked(object sender, EventArgs e)
     {
         //Refresh() updates all properties of the View
