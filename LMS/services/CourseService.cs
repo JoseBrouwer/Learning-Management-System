@@ -37,11 +37,29 @@ namespace LMS.Services
         }
         private CourseService()
         {
-            courses = new List<Course>();
+            courses = new List<Course>
+            { 
+                new Course{Code = "COP4530", Name = "DSII", Description = "Data Structures"},
+                new Course{Code = "COP4530", Name = "Complexity Analysis", Description = "Algorithms"},
+                new Course{Code = "COP4870", Name = "C#", Description = "Full-Stack App Development"},
+            };
         }
         public IEnumerable<Course> GetByStudentId(Guid personId)
         {
             return courses.Where(c => c.PersonId == personId);
+        }
+        public void AddOrUpdate(Course course)
+        {
+            if (course.Code == string.Empty)
+            {
+                course.Code = "DEFAULT";
+
+                //ONLY doesn't create a dupe bc its a local app
+                //CHANGE WHEN IMPLEMENTING SERVICES
+                courses.Add(course);
+            }
+            else
+                courses.Add(course);
         }
         public void Add(Course course)
         {

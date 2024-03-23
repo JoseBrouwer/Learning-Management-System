@@ -10,7 +10,7 @@ namespace LMS.Models {
         public List<Assignment>? Assignments { get; set; }
         public List<Module>? Modules { get; set; }
         public Guid PersonId { get; private set; }
-        public Course(string? code, string? name, string? description)
+        public Course(string? code = "", string? name = "", string? description = "")
         {
             Code = code;
             Name = name;

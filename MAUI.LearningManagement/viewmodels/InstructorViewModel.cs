@@ -14,6 +14,7 @@ namespace MAUI.LearningManagement.viewmodels
     class InstructorViewModel: INotifyPropertyChanged
     {
         private PersonService personService;
+        private CourseService courseService;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         //[CallerMemberName] = You're taking the name of the calling method/property for later use.
@@ -22,7 +23,11 @@ namespace MAUI.LearningManagement.viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        public string Query { get; set; }
+        public Course? SelectedCourse
+        {
+            get; set;
+        }
         public ObservableCollection<Person> Persons
         {
             get
@@ -32,16 +37,30 @@ namespace MAUI.LearningManagement.viewmodels
                 return new ObservableCollection<Person>(personService.Students);
             }
         }
-        public void AddPerson()
+        public ObservableCollection<Course> Courses
         {
-            personService?.Add(new Person("Added new student", 0, 100));
+            get
+            {
+                //Explicit call to conversion constructor
+                //NOTE: Use of "Students" and not "Persons"
+                return new ObservableCollection<Course>(courseService.Courses);
+            }
+        }
+        //public void AddCourse()
+        //{
+        //    courseService?.AddOrUpdate(new Course());
 
-            //Changed property, must notify to ensure it is updated
-            NotifyPropertyChanged(nameof(Persons));
+        //    //Changed property, must notify to ensure it is updated
+        //    NotifyPropertyChanged(nameof(Courses));
+        //}
+        public void Refresh()
+        {
+            NotifyPropertyChanged(nameof(Courses));
         }
         public InstructorViewModel()
         {
             personService = PersonService.Current;
+            courseService = CourseService.Current;
         }
     }
 }
