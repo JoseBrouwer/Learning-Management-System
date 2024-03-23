@@ -43,7 +43,11 @@ namespace MAUI.LearningManagement.viewmodels
             {
                 //Explicit call to conversion constructor
                 //NOTE: Use of "Students" and not "Persons"
-                return new ObservableCollection<Course>(courseService.Courses);
+                return new ObservableCollection<Course>(courseService.Courses //MAKE NULL PROOF
+                    .ToList().Where(c =>
+                        c.Name.ToUpper().Contains(Query ?? string.Empty)
+                        || c.Code.ToUpper().Contains(Query ?? string.Empty)
+                        || c.Description.ToUpper().Contains(Query ?? string.Empty)));
             }
         }
         //public void AddCourse()
