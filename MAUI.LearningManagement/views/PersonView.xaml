@@ -20,7 +20,24 @@
             ItemsSource="{Binding Persons}"
             SelectedItem="{Binding SelectedPerson}"
             >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" Grid.Column="0"/>
+                            <Button Text="Remove" Grid.Column="1" Clicked="RemoveClicked"/>
+                            <Button Text="Edit" Grid.Column="2" Clicked="UpdateClicked"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
+        
         <Button Text="Add" Clicked="AddClicked"/>
         <Button Text="Update" Clicked="UpdateClicked"/>
         <Button Text="Remove" Clicked="RemoveClicked"/>
