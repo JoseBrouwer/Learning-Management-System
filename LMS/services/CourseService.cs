@@ -65,6 +65,10 @@ namespace LMS.Services
         {
             courses.Add(course);
         }
+        public void Remove(Course course)
+        {
+            courses.Remove(course);
+        }
         public void Delete(Course courseToDelete)
         {
             courses.Remove(courseToDelete);

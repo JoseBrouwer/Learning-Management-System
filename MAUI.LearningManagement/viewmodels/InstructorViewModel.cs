@@ -61,6 +61,11 @@ namespace MAUI.LearningManagement.viewmodels
         {
             NotifyPropertyChanged(nameof(Courses));
         }
+        public void Remove()
+        {
+            courseService.Remove(SelectedCourse);
+            Refresh();
+        }
         public InstructorViewModel()
         {
             personService = PersonService.Current;

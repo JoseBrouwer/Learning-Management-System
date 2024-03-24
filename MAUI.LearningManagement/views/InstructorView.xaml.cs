@@ -39,7 +39,7 @@ public partial class InstructorView : ContentPage
     }
     private void RemoveClicked(object sender, EventArgs e)
     {
-       
+        (BindingContext as InstructorViewModel)?.Remove();
     }
     private void SearchClicked(object sender, EventArgs e)
     {
