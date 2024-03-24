@@ -40,13 +40,21 @@ namespace LMS.Services
             courses = new List<Course>
             { 
                 new Course{Code = "COP4530", Name = "DSII", Description = "Data Structures"},
-                new Course{Code = "COP4530", Name = "Complexity Analysis", Description = "Algorithms"},
+                new Course{Code = "COP4531", Name = "Complexity Analysis", Description = "Algorithms"},
                 new Course{Code = "COP4870", Name = "C#", Description = "Full-Stack App Development"},
             };
+        }
+        public Course? Get(string code)
+        {
+            return courses.FirstOrDefault(c => c.Code == code);
         }
         public IEnumerable<Course> GetByStudentId(Guid personId)
         {
             return courses.Where(c => c.PersonId == personId);
+        }
+        public bool IsCodeUnique(string code)
+        {
+            return !Courses.Any(course => course.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
         }
         public void AddOrUpdate(Course course) //FIX TO HANDLE UPDATING, CREATES DUPES
         {
@@ -58,7 +66,7 @@ namespace LMS.Services
                 //CHANGE WHEN IMPLEMENTING SERVICES
                 courses.Add(course);
             }
-            else
+            else if(IsCodeUnique(course.Code))
                 courses.Add(course);
         }
         public void Add(Course course)

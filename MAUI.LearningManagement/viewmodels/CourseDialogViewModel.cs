@@ -28,7 +28,8 @@ namespace MAUI.LearningManagement.viewmodels
                 {
                     course = new Course();
                 }
-                course.Code = value;
+                else
+                    course.Code = value;
             }
         }
         public string Name
@@ -59,6 +60,16 @@ namespace MAUI.LearningManagement.viewmodels
                 CourseService.Current.AddOrUpdate(course);
             }
         }
-        public CourseDialogViewModel() { }
+        public CourseDialogViewModel(string code) 
+        {
+            if(code == string.Empty || code == null)
+            {
+                course = new Course();
+            }
+            else
+            {
+                course = CourseService.Current.Get(code) ?? new Course();
+            }
+        }
     }
 }
