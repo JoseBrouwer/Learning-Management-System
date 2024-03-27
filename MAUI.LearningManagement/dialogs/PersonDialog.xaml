@@ -6,7 +6,7 @@
              NavigatedTo ="ContentPage_NavigatedTo">
     <VerticalStackLayout>
         <Label 
-            Text="New Student"
+            Text="Provide student information"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Grid> <!--same as Div-->
