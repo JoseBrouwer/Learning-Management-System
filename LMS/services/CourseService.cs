@@ -43,6 +43,7 @@ namespace LMS.Services
                 new Course{Code = "COP4531", Name = "Complexity Analysis", Description = "Algorithms"},
                 new Course{Code = "COP4870", Name = "C#", Description = "Full-Stack App Development"},
             };
+            //courses[1].AddPerson(new Person { Name = "Testing Roster" });
         }
         public Course? Get(string code)
         {

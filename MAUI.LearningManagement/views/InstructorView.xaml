@@ -27,7 +27,8 @@
         </ListView>
 
         <Button Text="Add Course" Clicked="AddCourseClicked"/>
-        <Button Text="Add Student" Clicked="AddStudentClicked"/>
+        <Button Text="Edit Enrollment" Clicked="EditEnrollmentClicked"/>
+        <Button Text="Add Enrollment" Clicked="AddEnrollmentClicked"/>
         <Button Text="View Modules" Clicked="ViewModulesClicked"/>
         <Button Text="View Assignments" Clicked="ViewAssignmentsClicked"/>
         <Button Text="Update Course Info" Clicked="UpdateClicked"/>

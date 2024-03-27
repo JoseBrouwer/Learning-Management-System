@@ -21,9 +21,21 @@ public partial class InstructorView : ContentPage
     {
         Shell.Current.GoToAsync("//CourseDetail");
     }
-    private void AddStudentClicked(object sender, EventArgs e)
+    private void EditEnrollmentClicked(object sender, EventArgs e)
     {
-       // Shell.Current.GoToAsync("//AddingStudent");
+        var courseCode = (BindingContext as InstructorViewModel)?.SelectedCourse?.Code;
+        if (courseCode != null)
+        {
+            Shell.Current.GoToAsync($"//EditEnrollment?courseCode={courseCode}");
+        }
+    }
+    private void AddEnrollmentClicked(object sender, EventArgs e)
+    {
+        var courseCode = (BindingContext as InstructorViewModel)?.SelectedCourse?.Code;
+        if (courseCode != null) 
+        {
+            Shell.Current.GoToAsync($"//AddEnrollment?courseCode={courseCode}");
+        }
     }
     private void ViewModulesClicked(object sender, EventArgs e)
     {

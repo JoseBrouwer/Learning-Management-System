@@ -3,9 +3,16 @@
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net8.0-windows10.0.19041.0</ActiveDebugFramework>
+    <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="dialogs\AddEnrollmentDialog.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="dialogs\CourseDialog.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="dialogs\EditEnrollmentDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="dialogs\PersonDialog.xaml">

@@ -29,5 +29,13 @@
         Title="Course Details"
         ContentTemplate="{DataTemplate local3:CourseDialog}"
         Route="CourseDetail" />
+    <ShellContent
+        Title="Edit Enrollments"
+        ContentTemplate="{DataTemplate local3:EditEnrollmentDialog}"
+        Route="EditEnrollment" />
+    <ShellContent
+        Title="Add Student to Course"
+        ContentTemplate="{DataTemplate local3:AddEnrollmentDialog}"
+        Route="AddEnrollment" />
 
 </Shell>
