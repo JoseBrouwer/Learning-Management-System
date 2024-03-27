@@ -28,7 +28,7 @@ public partial class EditEnrollmentDialog : ContentPage
     }
     private void RemoveStudentClicked(object sender, EventArgs e)
     {
-
+        (BindingContext as EditEnrollmentDialogViewModel)?.Remove();
     }
     private void BackClicked(object sender, EventArgs e)
     {

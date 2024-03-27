@@ -78,6 +78,20 @@ namespace LMS.Services
         {
             courses.Remove(course);
         }
+        public bool IsPersonInRoster(Course course, Person person)
+        {
+            foreach (Person student in course.Roster ?? new List<Person>())
+            {
+                if (student == person)
+                    return true;
+            }
+            return false;
+        }
+        public void RemovePersonFromRoster(Course course, Person person)
+        {
+            if(IsPersonInRoster(course, person))
+                course?.Roster?.Remove(person);
+        }
         public void Delete(Course courseToDelete)
         {
             courses.Remove(courseToDelete);

@@ -53,5 +53,10 @@ namespace MAUI.LearningManagement.viewmodels
         {
             NotifyPropertyChanged(nameof(Roster));
         }
+        public void Remove()
+        {
+            CourseService.Current.RemovePersonFromRoster(course, SelectedStudent);
+            Refresh();
+        }
     }
 }

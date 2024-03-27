@@ -64,7 +64,10 @@ namespace MAUI.LearningManagement.viewmodels
                 person = PersonService.Current.Get(pId) ?? new Person();
             }
             //Add selected person to the Roster
-            course?.AddPerson(person);
+            if(!CourseService.Current.IsPersonInRoster(course, person))
+            {
+                course?.AddPerson(person);
+            }
         }
     }
 }
