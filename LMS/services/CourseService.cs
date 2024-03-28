@@ -118,6 +118,10 @@ namespace LMS.Services
             if(IsPersonInRoster(course, person))
                 course?.Roster?.Remove(person);
         }
+        public void RemoveModule(Course course, Module module)
+        {
+            course.Modules?.Remove(module);
+        }
         public void Delete(Course courseToDelete)
         {
             courses.Remove(courseToDelete);

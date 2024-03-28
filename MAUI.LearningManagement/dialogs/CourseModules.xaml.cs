@@ -24,7 +24,7 @@ public partial class CourseModules : ContentPage
     }
     private void RemoveModuleClicked(object sender, EventArgs e)
     {
-        
+        (BindingContext as CourseModulesViewModel)?.Remove();
     }
     private void AddItemClicked(object sender, EventArgs e)
     {
