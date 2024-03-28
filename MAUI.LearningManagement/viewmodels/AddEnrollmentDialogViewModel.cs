@@ -67,6 +67,7 @@ namespace MAUI.LearningManagement.viewmodels
             if(!CourseService.Current.IsPersonInRoster(course, person))
             {
                 course?.AddPerson(person);
+                PersonService.Current.AddCourse(course, person);
             }
         }
     }

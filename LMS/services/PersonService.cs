@@ -75,9 +75,9 @@ namespace LMS.Services {
         {
             students.Add(student);
         }
-        public void AddCourse(Course course)
+        public void AddCourse(Course course, Person person)
         {
-            courses.Add(course);
+            person?.Courses?.Add(course);
         }
         public void Remove(Person student)
         {
