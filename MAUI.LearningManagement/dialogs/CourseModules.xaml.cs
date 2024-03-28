@@ -22,6 +22,18 @@ public partial class CourseModules : ContentPage
             Shell.Current.GoToAsync($"//ModuleDetail?courseCode={courseCode}?");
         }
     }
+    private void RemoveModuleClicked(object sender, EventArgs e)
+    {
+        
+    }
+    private void AddItemClicked(object sender, EventArgs e)
+    {
+        
+    }
+    private void RemoveItemClicked(object sender, EventArgs e)
+    {
+        
+    }
     private void BackClicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync("//Instructor");
