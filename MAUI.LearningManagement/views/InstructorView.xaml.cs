@@ -31,7 +31,11 @@ public partial class InstructorView : ContentPage
     }
     private void ViewModulesClicked(object sender, EventArgs e)
     {
-        //Shell.Current.GoToAsync("//ModuleDetail");
+        var courseCode = (BindingContext as InstructorViewModel)?.SelectedCourse?.Code;
+        if (courseCode != null)
+        {
+            Shell.Current.GoToAsync($"//ViewModules?courseCode={courseCode}");
+        }
     }
     private void ViewAssignmentsClicked(object sender, EventArgs e)
     {

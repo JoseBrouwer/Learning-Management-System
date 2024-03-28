@@ -8,12 +8,16 @@ namespace LMS.Models
         public string? Name { get; set; }
         public string? Description { get; set; }
         public List<Item>? Items { get; set; }
-        public Module(string? name, string? description, List<Item>? items)
+        public Module(string? name="", string? description = "")
         {
             Name = name;
             Description = description;
-            Items = items;
+            Items = new List<Item>();
             Console.WriteLine("Module Created");
+        }
+        public override string ToString()
+        {
+            return $"NAME:{Name}\nDESCRIPTION:{Description}";
         }
     }
 }

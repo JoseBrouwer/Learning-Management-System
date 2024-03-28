@@ -1,25 +1,25 @@
-using LMS.Models;
 using MAUI.LearningManagement.viewmodels;
 
 namespace MAUI.LearningManagement.dialogs;
 
+[QueryProperty(nameof(moduleName), "moduleName")]
 [QueryProperty(nameof(courseCode), "courseCode")]
-
-public partial class CourseDialog : ContentPage
+public partial class ModuleDialog : ContentPage
 {
+    public string moduleName { get; set; } //Matches Module.Name
     public string courseCode { get; set; } //Matches Course.Code
-	public CourseDialog()
+    public ModuleDialog()
 	{
 		InitializeComponent();
-        BindingContext = new CourseDialogViewModel(courseCode);
+        BindingContext = new ModuleDialogViewModel(courseCode);
     }
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        BindingContext = new CourseDialogViewModel(courseCode);
+        BindingContext = new ModuleDialogViewModel(courseCode);
     }
     private void OkClicked(object sender, EventArgs e)
     {
-        (BindingContext as CourseDialogViewModel)?.AddCourse();
+        (BindingContext as ModuleDialogViewModel)?.AddModule();
         Shell.Current.GoToAsync("//Instructor");
     }
     private void CancelClicked(object sender, EventArgs e)

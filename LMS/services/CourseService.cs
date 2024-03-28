@@ -49,6 +49,10 @@ namespace LMS.Services
         {
             return courses.FirstOrDefault(c => c.Code == code);
         }
+        public Module? GetModule(Course course, string name) 
+        {
+            return course?.Modules?.FirstOrDefault(m => m.Name == name);
+        }
         public IEnumerable<Course> GetByStudentId(Guid personId)
         {
             return courses.Where(c => c.PersonId == personId);
@@ -57,7 +61,7 @@ namespace LMS.Services
         {
             return !Courses.Any(course => course.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
         }
-        public void AddOrUpdate(Course course) //FIX TO HANDLE UPDATING, CREATES DUPES
+        public void AddOrUpdate(Course course)
         {
             if (course.Code == string.Empty)
             {
@@ -70,9 +74,31 @@ namespace LMS.Services
             else if(IsCodeUnique(course.Code))
                 courses.Add(course);
         }
+        //public void AddOrUpdateModule(Course course, Module module)
+        //{
+        //    course.Modules?.Add(module);
+        //}
         public void Add(Course course)
         {
             courses.Add(course);
+        }
+        public bool IsModuleUnique(Course course, string name) 
+        { 
+            foreach(Module module in course.Modules)
+            {
+                if (module.Name == name)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public void AddOrUpdateModule(Course course, Module module)
+        {
+            if(IsModuleUnique(course, module.Name))
+            {
+                course?.Modules?.Add(module);
+            }
         }
         public void Remove(Course course)
         {
