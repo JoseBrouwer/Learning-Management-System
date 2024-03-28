@@ -79,6 +79,9 @@
 	  <Compile Update="dialogs\PersonDialog.xaml.cs">
 	    <DependentUpon>PersonDialog.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="views\CourseModulesView.xaml.cs">
+	    <DependentUpon>CourseModulesView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="views\InstructorView.xaml.cs">
 	    <DependentUpon>InstructorView.xaml</DependentUpon>
 	  </Compile>
@@ -94,7 +97,7 @@
 	  <MauiXaml Update="dialogs\CourseDialog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="dialogs\CourseModules.xaml">
+	  <MauiXaml Update="views\CourseModulesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="dialogs\EditEnrollmentDialog.xaml">

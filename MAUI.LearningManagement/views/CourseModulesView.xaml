@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MAUI.LearningManagement.dialogs.CourseModules"
+             x:Class="MAUI.LearningManagement.views.CourseModulesView"
              Title="CourseModules"
              NavigatedTo="ContentPage_NavigatedTo"
              >
@@ -17,8 +17,7 @@
         </ListView>
         <Button Text="Add Module" Clicked="AddModuleClicked"/>
         <Button Text="Remove Module" Clicked="RemoveModuleClicked"/>
-        <Button Text="Add Item to a Module" Clicked="AddItemClicked"/>
-        <Button Text="Remove Item from Module" Clicked="RemoveItemClicked"/>
+        <Button Text="View Items" Clicked="ViewItemsClicked"/>
         <Button Text="Back" Clicked="BackClicked"/>
     </VerticalStackLayout>
 </ContentPage>

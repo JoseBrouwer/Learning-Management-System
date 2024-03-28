@@ -39,7 +39,7 @@
         Route="AddEnrollment" />
     <ShellContent
         Title="Course Modules"
-        ContentTemplate="{DataTemplate local3:CourseModules}"
+        ContentTemplate="{DataTemplate local2:CourseModulesView}"
         Route="ViewModules" />
     <ShellContent
         Title="Module Details"

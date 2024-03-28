@@ -1,12 +1,12 @@
 using MAUI.LearningManagement.viewmodels;
 
-namespace MAUI.LearningManagement.dialogs;
+namespace MAUI.LearningManagement.views;
 
 [QueryProperty(nameof(courseCode), "courseCode")]
-public partial class CourseModules : ContentPage
+public partial class CourseModulesView : ContentPage
 {
     public string courseCode { get; set; } //Matches Course.Cod
-    public CourseModules()
+    public CourseModulesView()
 	{
 		InitializeComponent();
     }
@@ -26,13 +26,12 @@ public partial class CourseModules : ContentPage
     {
         (BindingContext as CourseModulesViewModel)?.Remove();
     }
-    private void AddItemClicked(object sender, EventArgs e)
+    private void ViewItemsClicked(object sender, EventArgs e)
     {
-        
-    }
-    private void RemoveItemClicked(object sender, EventArgs e)
-    {
-        
+        if(courseCode != null)
+        {
+            Shell.Current.GoToAsync($"//ViewItems?courseCode={courseCode}?");
+        }
     }
     private void BackClicked(object sender, EventArgs e)
     {
