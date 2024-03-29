@@ -5,7 +5,7 @@ namespace MAUI.LearningManagement.views;
 [QueryProperty(nameof(courseCode), "courseCode")]
 public partial class CourseModulesView : ContentPage
 {
-    public string courseCode { get; set; } //Matches Course.Cod
+    public string courseCode { get; set; } //Matches Course.Code
     public CourseModulesView()
 	{
 		InitializeComponent();
@@ -19,7 +19,7 @@ public partial class CourseModulesView : ContentPage
     {
         if(courseCode != null)
         {
-            Shell.Current.GoToAsync($"//ModuleDetail?courseCode={courseCode}?");
+            Shell.Current.GoToAsync($"//ModuleDetail?courseCode={courseCode}");
         }
     }
     private void RemoveModuleClicked(object sender, EventArgs e)
@@ -28,9 +28,11 @@ public partial class CourseModulesView : ContentPage
     }
     private void ViewItemsClicked(object sender, EventArgs e)
     {
+        var moduleName = (BindingContext as CourseModulesViewModel)?.SelectedModule?.Name;
         if(courseCode != null)
         {
-            Shell.Current.GoToAsync($"//ViewItems?courseCode={courseCode}?");
+            //NOTE the use of '&' for multiple parameters
+            Shell.Current.GoToAsync($"//ViewItems?courseCode={courseCode}&moduleName={moduleName}");
         }
     }
     private void BackClicked(object sender, EventArgs e)

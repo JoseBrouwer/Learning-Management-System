@@ -13,6 +13,7 @@ namespace LMS.Models
             Name = name;
             Description = description;
             Items = new List<Item>();
+            //Items.Add(new Item { Name = "Testing Items", Description = "TEST", Path = "TEST PATH" });
             Console.WriteLine("Module Created");
         }
         public override string ToString()

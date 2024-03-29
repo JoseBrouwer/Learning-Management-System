@@ -1,4 +1,5 @@
 using LMS.Models;
+using System.Xml.Linq;
 
 namespace LMS.Services
 {
@@ -74,10 +75,6 @@ namespace LMS.Services
             else if(IsCodeUnique(course.Code))
                 courses.Add(course);
         }
-        //public void AddOrUpdateModule(Course course, Module module)
-        //{
-        //    course.Modules?.Add(module);
-        //}
         public void Add(Course course)
         {
             courses.Add(course);
@@ -98,6 +95,26 @@ namespace LMS.Services
             if(IsModuleUnique(course, module.Name))
             {
                 course?.Modules?.Add(module);
+            }
+        }
+        public bool IsItemUnique(Module module, string name)
+        {
+            foreach(Item item in module.Items)
+            {
+                if(item.Name == name)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public void AddOrUpdateItem(Course course, Module module, Item item)
+        {
+            if(IsItemUnique(module, item.Name))
+            {
+                item.Path = $"Courses/{course?.Name ?? "NOT SET"}" +
+                    $"/Modules/{module?.Name ?? "NOT SET"}/Items/{item.Name ?? "NOT SET"}";
+                module?.Items?.Add(item);
             }
         }
         public void Remove(Course course)

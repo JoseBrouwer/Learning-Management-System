@@ -45,5 +45,13 @@
         Title="Module Details"
         ContentTemplate="{DataTemplate local3:ModuleDialog}"
         Route="ModuleDetail" />
+    <ShellContent
+        Title="Module Items"
+        ContentTemplate="{DataTemplate local2:ModuleItemsView}"
+        Route="ViewItems" />
+    <ShellContent
+        Title="Item Details"
+        ContentTemplate="{DataTemplate local3:ItemDialog}"
+        Route="ItemDetail" />
 
 </Shell>

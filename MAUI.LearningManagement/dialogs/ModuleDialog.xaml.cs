@@ -2,11 +2,9 @@ using MAUI.LearningManagement.viewmodels;
 
 namespace MAUI.LearningManagement.dialogs;
 
-[QueryProperty(nameof(moduleName), "moduleName")]
 [QueryProperty(nameof(courseCode), "courseCode")]
 public partial class ModuleDialog : ContentPage
 {
-    public string moduleName { get; set; } //Matches Module.Name
     public string courseCode { get; set; } //Matches Course.Code
     public ModuleDialog()
 	{
