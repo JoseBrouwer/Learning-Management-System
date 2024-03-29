@@ -24,6 +24,6 @@ public partial class ItemDialog : ContentPage
     }
     private void CancelClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//ViewItems");
+        Shell.Current.GoToAsync($"//ViewItems?courseCode={courseCode}&moduleName={moduleName}");
     }
 }
