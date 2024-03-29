@@ -139,6 +139,10 @@ namespace LMS.Services
         {
             course.Modules?.Remove(module);
         }
+        public void RemoveItem(Module module, Item item)
+        {
+            module?.Items?.Remove(item);
+        }
         public void Delete(Course courseToDelete)
         {
             courses.Remove(courseToDelete);

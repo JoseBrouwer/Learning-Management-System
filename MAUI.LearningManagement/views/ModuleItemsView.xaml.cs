@@ -26,6 +26,7 @@ public partial class ModuleItemsView : ContentPage
     }
     private void RemoveItemClicked(object sender, EventArgs e)
     {
+        (BindingContext as ModuleItemsViewModel)?.Remove();
     }
     private void BackClicked(object sender, EventArgs e)
     {

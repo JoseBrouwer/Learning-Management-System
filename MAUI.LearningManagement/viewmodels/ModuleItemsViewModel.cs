@@ -23,7 +23,7 @@ namespace MAUI.LearningManagement.viewmodels
         }
         private Course? course;
         private Module? module;
-        public Module? SelectedItem
+        public Item? SelectedItem
         {
             get; set;
         }
@@ -52,6 +52,10 @@ namespace MAUI.LearningManagement.viewmodels
         {
             NotifyPropertyChanged(nameof(Items));
         }
-
+        public void Remove()
+        {
+            CourseService.Current.RemoveItem(module, SelectedItem);
+            Refresh();
+        }
     }
 }

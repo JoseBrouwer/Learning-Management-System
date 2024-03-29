@@ -18,10 +18,10 @@ public partial class ModuleDialog : ContentPage
     private void OkClicked(object sender, EventArgs e)
     {
         (BindingContext as ModuleDialogViewModel)?.AddModule();
-        Shell.Current.GoToAsync("//Instructor");
+        Shell.Current.GoToAsync($"//ViewModules?courseCode={courseCode}");
     }
     private void CancelClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//Instructor");
+        Shell.Current.GoToAsync($"//ViewModules?courseCode={courseCode}");
     }
 }
