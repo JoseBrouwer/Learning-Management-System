@@ -42,6 +42,10 @@
         ContentTemplate="{DataTemplate local2:CourseModulesView}"
         Route="ViewModules" />
     <ShellContent
+        Title="Course Assignments"
+        ContentTemplate="{DataTemplate local2:CourseAssignmentsView}"
+        Route="ViewAssignments" />
+    <ShellContent
         Title="Module Details"
         ContentTemplate="{DataTemplate local3:ModuleDialog}"
         Route="ModuleDetail" />
@@ -53,5 +57,9 @@
         Title="Item Details"
         ContentTemplate="{DataTemplate local3:ItemDialog}"
         Route="ItemDetail" />
+    <ShellContent
+        Title="Assignment Details"
+        ContentTemplate="{DataTemplate local3:AddAssignmentDialog}"
+        Route="AssignmentDetail" />
 
 </Shell>

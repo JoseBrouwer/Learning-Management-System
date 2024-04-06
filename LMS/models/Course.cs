@@ -19,6 +19,13 @@ namespace LMS.Models {
             Assignments = new List<Assignment>();
             Modules = new List<Module>();
             //Modules.Add(new Module { Name = "TEST MODULE", Description = "Testing"});
+            Assignments.Add(new Assignment
+            {
+                Name = "Test Assignment",
+                Description = "Tetsing Assignments for a course",
+                TotalAvailablePoints = 99.9,
+                DueDate = "4/6/24"
+            });
             Console.WriteLine("Course Created");
         }
         public void AddPerson(Person person) //Adds a Person to the Roster
