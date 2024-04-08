@@ -2,45 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LearningManagement.views.PersonView"
-             Title="StudentsView"
-             NavigatedTo="ContentPage_NavigatedTo"
-             >
-            
+             Title="PersonView">
     <VerticalStackLayout>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Entry Text="{Binding Query}" Grid.Column="0"/>
-            <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
-        </Grid>
-        
-        <ListView
-            ItemsSource="{Binding Persons}"
-            SelectedItem="{Binding SelectedPerson}"
-            >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Name}" Grid.Column="0"/>
-                            <Button Text="Remove" Grid.Column="1" Clicked="RemoveClicked"/>
-                            <Button Text="Edit" Grid.Column="2" Clicked="UpdateClicked"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-        <Button Text="Add" Clicked="AddClicked"/>
-        <Button Text="Update" Clicked="UpdateClicked"/>
-        <Button Text="Remove" Clicked="RemoveClicked"/>
-        <Button Text="Back" Clicked="BackClicked"/>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

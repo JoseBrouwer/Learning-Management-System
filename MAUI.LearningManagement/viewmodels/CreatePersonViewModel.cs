@@ -11,7 +11,7 @@ using LMS.Services;
 
 namespace MAUI.LearningManagement.viewmodels
 {
-    class PersonViewModel : INotifyPropertyChanged
+    class CreatePersonViewModel : INotifyPropertyChanged
     {
         private PersonService personService;
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -56,7 +56,7 @@ namespace MAUI.LearningManagement.viewmodels
             personService.Remove(SelectedPerson);
             Refresh();
         }
-        public PersonViewModel()
+        public CreatePersonViewModel()
         {
             personService = PersonService.Current;
         }

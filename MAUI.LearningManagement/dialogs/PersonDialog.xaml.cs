@@ -14,12 +14,12 @@ public partial class PersonDialog : ContentPage
     private void OkClicked(object sender, EventArgs e)
     {
         (BindingContext as PersonDialogViewModel)?.AddPerson();
-        Shell.Current.GoToAsync("//Person");
+        Shell.Current.GoToAsync("//CreatePerson");
     }
     private void CancelClicked(object sender, EventArgs e)
     {
 		//return to PersonDialog.xaml
-		Shell.Current.GoToAsync("//Person");
+		Shell.Current.GoToAsync("//CreatePerson");
     }
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)

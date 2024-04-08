@@ -5,33 +5,35 @@
              Title="InstructorView"
              NavigatedTo="ContentPage_NavigatedTo"
              >
-    <VerticalStackLayout>
-        <Label 
-            Text="INSTRUCTORS!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+                Text="INSTRUCTORS!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Entry Text="{Binding Query}" Grid.Column="0"/>
-            <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
-        </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0"/>
+                <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
+            </Grid>
 
-        <ListView
-            ItemsSource="{Binding Courses}"
-            SelectedItem="{Binding SelectedCourse}"
-            >
-        </ListView>
+            <ListView
+                ItemsSource="{Binding Courses}"
+                SelectedItem="{Binding SelectedCourse}"
+                >
+            </ListView>
 
-        <Button Text="Add Course" Clicked="AddCourseClicked"/>
-        <Button Text="Edit Enrollment" Clicked="EditEnrollmentClicked"/>
-        <Button Text="Update Course Info" Clicked="UpdateClicked"/>
-        <Button Text="View Modules" Clicked="ViewModulesClicked"/>
-        <Button Text="View Assignments" Clicked="ViewAssignmentsClicked"/>
-        <Button Text="Remove Course" Clicked="RemoveClicked"/>
-        <Button Text="Back" Clicked="BackClicked"/>
-    </VerticalStackLayout>
+            <Button Text="Add Course" Clicked="AddCourseClicked"/>
+            <Button Text="Edit Enrollment" Clicked="EditEnrollmentClicked"/>
+            <Button Text="Update Course Info" Clicked="UpdateClicked"/>
+            <Button Text="View Modules" Clicked="ViewModulesClicked"/>
+            <Button Text="View Assignments" Clicked="ViewAssignmentsClicked"/>
+            <Button Text="Remove Course" Clicked="RemoveClicked"/>
+            <Button Text="Back" Clicked="BackClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

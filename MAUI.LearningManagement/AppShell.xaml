@@ -22,6 +22,10 @@
         ContentTemplate="{DataTemplate local2:PersonView}"
         Route="Person" />
     <ShellContent
+        Title="Create Students"
+        ContentTemplate="{DataTemplate local2:CreatePersonView}"
+        Route="CreatePerson" />
+    <ShellContent
         Title="Student Details"
         ContentTemplate="{DataTemplate local3:PersonDialog}"
         Route="PersonDetail" />
