@@ -29,7 +29,7 @@ public partial class CourseAssignmentsView : ContentPage
     }
     private void RemoveClicked(object sender, EventArgs e)
     {
-        
+        (BindingContext as CourseAssignmentsViewModel)?.Remove();
     }
     private void BackClicked(object sender, EventArgs e)
     {

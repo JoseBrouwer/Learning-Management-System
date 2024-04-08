@@ -48,5 +48,10 @@ namespace MAUI.LearningManagement.viewmodels
         {
             NotifyPropertyChanged(nameof(Assignments));
         }
+        public void Remove()
+        {
+            CourseService.Current.RemoveAssignment(course, SelectedAssignment);
+            Refresh();
+        }
     }
 }
