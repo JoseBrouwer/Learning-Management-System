@@ -13,10 +13,10 @@ namespace MAUI.LearningManagement.viewmodels
     class ModuleDialogViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
         private Course? course;
         private Module? module;

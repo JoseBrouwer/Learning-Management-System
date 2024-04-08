@@ -117,6 +117,24 @@ namespace LMS.Services
                 module?.Items?.Add(item);
             }
         }
+        public bool IsAssignmentUnique(Course course, string name)
+        {
+            foreach(Assignment assignment in course.Assignments)
+            {
+                if(assignment.Name == name)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public void AddOrUpdateAssignment(Course course, Assignment assignment)
+        {
+            if(IsAssignmentUnique(course, assignment.Name))
+            {
+                course.Assignments?.Add(assignment);
+            }
+        }
         public void Remove(Course course)
         {
             courses.Remove(course);

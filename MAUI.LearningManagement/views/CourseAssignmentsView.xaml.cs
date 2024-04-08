@@ -10,15 +10,18 @@ public partial class CourseAssignmentsView : ContentPage
     public CourseAssignmentsView()
 	{
         InitializeComponent();
-        BindingContext = new CourseAssignmentsViewModel(courseCode);
     }
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
+        BindingContext = new CourseAssignmentsViewModel(courseCode);
         (BindingContext as CourseAssignmentsViewModel)?.Refresh();
     }
     private void AddClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}");
+        if(courseCode != null)
+        {
+            Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}");
+        }
     }
     private void UpdateClicked(object sender, EventArgs e)
     {

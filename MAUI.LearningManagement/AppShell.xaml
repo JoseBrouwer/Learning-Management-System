@@ -59,7 +59,7 @@
         Route="ItemDetail" />
     <ShellContent
         Title="Assignment Details"
-        ContentTemplate="{DataTemplate local3:AddAssignmentDialog}"
+        ContentTemplate="{DataTemplate local3:AssignmentDialog}"
         Route="AssignmentDetail" />
 
 </Shell>

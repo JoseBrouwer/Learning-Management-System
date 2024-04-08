@@ -6,10 +6,10 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="dialogs\AddAssignmentDialog.xaml">
+    <MauiXaml Update="dialogs\AddEnrollmentDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="dialogs\AddEnrollmentDialog.xaml">
+    <MauiXaml Update="dialogs\AssignmentDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="dialogs\CourseDialog.xaml">
