@@ -34,11 +34,13 @@ namespace MAUI.LearningManagement.viewmodels
                 course = CourseService.Current.Get(code) ?? new Course();
             }
         }
+        public string Query { get; set; }
         public ObservableCollection<Module> Modules
         {
             get
             {
-                return new ObservableCollection<Module>(course.Modules.ToList());
+                return new ObservableCollection<Module>(course.Modules.ToList().Where(m 
+                    => m?.Name?.ToUpper()?.Contains(Query?.ToUpper() ?? string.Empty) ?? false));
             }
         }
         public void Refresh()

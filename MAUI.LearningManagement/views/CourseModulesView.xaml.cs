@@ -39,4 +39,8 @@ public partial class CourseModulesView : ContentPage
     {
         Shell.Current.GoToAsync("//Instructor");
     }
+    private void SearchClicked(object sender, EventArgs e)
+    {
+        (BindingContext as CourseModulesViewModel)?.Refresh();
+    }
 }

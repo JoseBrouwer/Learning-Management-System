@@ -10,14 +10,26 @@
             Text="Select a Module"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Entry Text="{Binding Query}" Grid.Column="0"/>
+            <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
+        </Grid>
+
         <ListView
             ItemsSource="{Binding Modules}"
             SelectedItem="{Binding SelectedModule}"
             >
         </ListView>
+        
         <Button Text="Add Module" Clicked="AddModuleClicked"/>
         <Button Text="Remove Module" Clicked="RemoveModuleClicked"/>
         <Button Text="View Items" Clicked="ViewItemsClicked"/>
         <Button Text="Back" Clicked="BackClicked"/>
+        
     </VerticalStackLayout>
 </ContentPage>
