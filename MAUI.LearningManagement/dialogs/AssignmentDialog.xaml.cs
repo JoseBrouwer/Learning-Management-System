@@ -3,9 +3,11 @@ using MAUI.LearningManagement.viewmodels;
 namespace MAUI.LearningManagement.dialogs;
 
 [QueryProperty(nameof(courseCode), "courseCode")]
+[QueryProperty(nameof(assignmentName), "assignmentName")]
 public partial class AssignmentDialog : ContentPage
 {
     public string courseCode { get; set; } //Matches Course.Code
+    public string assignmentName { get; set; }
     public AssignmentDialog()
 	{
 		InitializeComponent();
@@ -13,7 +15,7 @@ public partial class AssignmentDialog : ContentPage
     }
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        BindingContext = new AssignmentDialogViewModel(courseCode);
+        BindingContext = new AssignmentDialogViewModel(courseCode, assignmentName);
     }
     private void OkClicked(object sender, EventArgs e)
     {

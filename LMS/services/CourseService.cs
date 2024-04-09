@@ -54,6 +54,10 @@ namespace LMS.Services
         {
             return course?.Modules?.FirstOrDefault(m => m.Name == name);
         }
+        public Assignment? GetAssignment(Course course, string name)
+        {
+            return course?.Assignments?.FirstOrDefault(a => a.Name == name);
+        }
         public IEnumerable<Course> GetByStudentId(Guid personId)
         {
             return courses.Where(c => c.PersonId == personId);

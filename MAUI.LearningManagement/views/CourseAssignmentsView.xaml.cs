@@ -6,7 +6,6 @@ namespace MAUI.LearningManagement.views;
 public partial class CourseAssignmentsView : ContentPage
 {
     public string courseCode { get; set; } //Matches Course.Code
-
     public CourseAssignmentsView()
 	{
         InitializeComponent();
@@ -20,12 +19,16 @@ public partial class CourseAssignmentsView : ContentPage
     {
         if(courseCode != null)
         {
-            Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}");
+            Shell.Current.GoToAsync($"//AssignmentDetail");
         }
     }
     private void UpdateClicked(object sender, EventArgs e)
     {
-        
+        var assignmentName = (BindingContext as CourseAssignmentsViewModel)?.SelectedAssignment?.Name;
+        if(courseCode != null) 
+        {
+            Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}&assignmentName={assignmentName}");
+        }
     }
     private void RemoveClicked(object sender, EventArgs e)
     {

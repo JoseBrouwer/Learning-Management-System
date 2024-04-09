@@ -2,14 +2,16 @@
 using LMS.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MAUI.LearningManagement.viewmodels
 {
     internal class AssignmentDialogViewModel
-    {
+    { 
         private Course? course;
         private Assignment? assignment;
 
@@ -66,9 +68,9 @@ namespace MAUI.LearningManagement.viewmodels
             }
         }
 
-        public AssignmentDialogViewModel(string code) 
+        public AssignmentDialogViewModel(string code, string name) 
         {
-            if (code == string.Empty || code == null)
+            if (code == string.Empty || code == null || name == string.Empty || name == null)
             {
                 course = new Course();
                 assignment = new Assignment();
@@ -76,7 +78,7 @@ namespace MAUI.LearningManagement.viewmodels
             else
             {
                 course = CourseService.Current.Get(code) ?? new Course();
-                assignment = new Assignment();
+                assignment = CourseService.Current.GetAssignment(course, name);
             }
         }
         public void AddAssignment()
