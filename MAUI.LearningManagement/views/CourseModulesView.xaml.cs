@@ -29,7 +29,7 @@ public partial class CourseModulesView : ContentPage
     private void ViewItemsClicked(object sender, EventArgs e)
     {
         var moduleName = (BindingContext as CourseModulesViewModel)?.SelectedModule?.Name;
-        if(courseCode != null)
+        if(moduleName != null)
         {
             //NOTE the use of '&' for multiple parameters
             Shell.Current.GoToAsync($"//ViewItems?courseCode={courseCode}&moduleName={moduleName}");
