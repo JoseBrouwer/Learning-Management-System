@@ -2,12 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LearningManagement.dialogs.SubmissionDialog"
-             Title="SubmissionDialog">
+             Title="SubmissionDialog"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center" HorizontalOptions="Center">
-            <!--<Label 
-                Text="Fill out Assignment to Submmit"
-                 />-->
 
             <Grid HorizontalOptions="Fill"
                 VerticalOptions="FillAndExpand"
@@ -25,7 +24,7 @@
                    HorizontalOptions="Center" 
                    Grid.Row="0" />
 
-                <!-- Entry control acting as a textbox -->
+                <!-- Editor control acting as a textbox -->
                 <Editor Text="{Binding Text}"
                    Grid.Row="1" 
                    Placeholder="Type here"

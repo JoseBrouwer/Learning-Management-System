@@ -1,3 +1,4 @@
+using LMS.models;
 using LMS.Models;
 
 namespace LMS.Services {
@@ -90,6 +91,35 @@ namespace LMS.Services {
         public void DeleteCourse(Course courseToDelete)
         {
             courses.Remove(courseToDelete);
+        }
+        public bool IsFirstSubmission(Assignment assignment, Submission submission, int personId)
+        {
+            foreach(Submission sub in assignment.Submissions)
+            {
+                //Has this user submitted something for this assignment?
+                if(sub.Id == personId)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public void SubmitAssignment(Assignment assignment, Submission submission, int personId)
+        {
+            if(IsFirstSubmission(assignment, submission, personId))
+                assignment.Submissions?.Add(submission);
+            else
+            {
+                // Find the existing submission for the personId
+                var existingSubmission = assignment.Submissions?.FirstOrDefault(s => s.Id == personId);
+
+                // If found, remove the existing submission
+                if (existingSubmission != null)
+                {
+                    assignment.Submissions?.Remove(existingSubmission);
+                    assignment.Submissions?.Add(submission);
+                }    
+            }
         }
     }
 }

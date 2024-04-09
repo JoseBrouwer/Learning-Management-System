@@ -1,4 +1,5 @@
 using LMS.Models;
+using MAUI.LearningManagement.viewmodels;
 
 namespace MAUI.LearningManagement.dialogs;
 
@@ -14,10 +15,13 @@ public partial class SubmissionDialog : ContentPage
 	{
 		InitializeComponent();
 	}
-
+    private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        BindingContext = new SubmissionDialogViewModel(personId, courseCode, assignmentName);
+    }
     private void SubmitClicked(object sender, EventArgs e)
     {
-        //ADD SUBMISSION IN PERSONSERVICE
+        (BindingContext as SubmissionDialogViewModel)?.Submit();
         Shell.Current.GoToAsync($"//CourseAssignments?personId={personId}&courseCode={courseCode}");
     }
 

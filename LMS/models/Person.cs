@@ -1,3 +1,5 @@
+using LMS.Services;
+
 namespace LMS.Models {
     public class Person
     {
@@ -22,7 +24,9 @@ namespace LMS.Models {
             Name = name;
             Classification = classification;
             Courses = new List<Course>();
-            Courses.Add(new Course { Code = "007", Name = "TEST", Description = "Testing..."});
+            Course newCourse = new Course { Code = "007", Name = "TEST", Description = "Testing..."};
+            CourseService.Current.Add(newCourse);
+            Courses.Add(newCourse);
             Grades = grades;
             Id = Guid.NewGuid();
             Console.WriteLine("Person Created");
