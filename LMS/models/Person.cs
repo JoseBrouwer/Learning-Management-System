@@ -22,6 +22,7 @@ namespace LMS.Models {
             Name = name;
             Classification = classification;
             Courses = new List<Course>();
+            Courses.Add(new Course { Code = "007", Name = "TEST", Description = "Testing..."});
             Grades = grades;
             Id = Guid.NewGuid();
             Console.WriteLine("Person Created");

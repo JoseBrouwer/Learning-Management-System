@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:MAUI.LearningManagement"
     xmlns:local2="clr-namespace:MAUI.LearningManagement.views"
     xmlns:local3="clr-namespace:MAUI.LearningManagement.dialogs"
+    xmlns:local4="clr-namespace:MAUI.LearningManagement.views.person"
     Shell.FlyoutBehavior="Disabled"
     Title="MAUI.LearningManagement">
 
@@ -65,5 +66,9 @@
         Title="Assignment Details"
         ContentTemplate="{DataTemplate local3:AssignmentDialog}"
         Route="AssignmentDetail" />
+    <ShellContent
+        Title="Student's Courses"
+        ContentTemplate="{DataTemplate local4:PersonCourses}"
+        Route="PersonCourses" />
 
 </Shell>

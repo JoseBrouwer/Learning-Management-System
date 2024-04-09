@@ -45,6 +45,9 @@
     <MauiXaml Update="views\PersonView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="views\person\PersonCourses.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
   <ItemGroup>
     <None Update="App.xaml">

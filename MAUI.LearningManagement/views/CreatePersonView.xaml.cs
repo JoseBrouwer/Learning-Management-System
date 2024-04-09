@@ -33,7 +33,6 @@ public partial class CreatePersonView : ContentPage
         }
         
     }
-
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
         (BindingContext as CreatePersonViewModel)?.Refresh();
