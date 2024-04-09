@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI.LearningManagement.views.person.PersonModuleItems"
+             Title="PersonModuleItems"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
+    <VerticalStackLayout>
+        <Label 
+            Text="Module Items"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <ListView
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedItem}"
+            >
+        </ListView>
+
+        <Button Text="Back" Clicked="BackClicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

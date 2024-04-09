@@ -136,6 +136,9 @@
 	  <MauiXaml Update="views\person\PersonCourses.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="views\person\PersonModuleItems.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

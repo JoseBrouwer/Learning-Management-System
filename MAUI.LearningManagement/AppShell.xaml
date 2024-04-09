@@ -74,5 +74,9 @@
         Title="Selected Course's Modules"
         ContentTemplate="{DataTemplate local4:PersonCourseModules}"
         Route="CourseModules" />
+    <ShellContent
+        Title="Selected Module's Items"
+        ContentTemplate="{DataTemplate local4:PersonModuleItems}"
+        Route="ModuleItems" />
 
 </Shell>

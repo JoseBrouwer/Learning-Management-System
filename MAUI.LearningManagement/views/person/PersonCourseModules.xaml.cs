@@ -20,9 +20,12 @@ public partial class PersonCourseModules : ContentPage
     }
     private void ItemsClicked(object sender, EventArgs e)
     {
-
+        var moduleName = (BindingContext as PersonCourseModulesViewModel)?.SelectedModule?.Name;
+        if (courseCode != null)
+        {
+            Shell.Current.GoToAsync($"//ModuleItems?personId={personId}&courseCode={courseCode}&moduleName={moduleName}");
+        }
     }
-
     private void BackClicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync($"//PersonCourses?personId={personId}");
