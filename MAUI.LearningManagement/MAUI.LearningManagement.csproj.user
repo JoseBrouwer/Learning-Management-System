@@ -18,6 +18,9 @@
     <MauiXaml Update="dialogs\ItemDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="dialogs\SubmissionDialog.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="views\CourseAssignmentsView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="views\PersonView.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="views\person\PersonCourseAssignments.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="views\person\PersonCourseModules.xaml">

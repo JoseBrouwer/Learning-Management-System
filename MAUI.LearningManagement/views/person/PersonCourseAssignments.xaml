@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI.LearningManagement.views.person.PersonCourseAssignments"
+             Title="PersonCourseAssignments"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
+    <VerticalStackLayout>
+        <Label 
+            Text="Course Assignments"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <ListView
+            ItemsSource="{Binding Assignments}"
+            SelectedItem="{Binding SelectedAssignment}"
+            >
+        </ListView>
+
+        <Button Text="Start Assignment" Clicked="StartClicked"/>
+        <Button Text="Back" Clicked="BackClicked"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
