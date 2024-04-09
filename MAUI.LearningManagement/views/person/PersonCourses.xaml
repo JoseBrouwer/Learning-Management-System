@@ -30,6 +30,5 @@
         <Button Text="Assignments" Clicked="AssignmentsClicked"/>
         <Button Text="Back" Clicked="BackClicked"/>
 
-
     </VerticalStackLayout>
 </ContentPage>

@@ -18,7 +18,7 @@ namespace LMS.Models {
             Roster = new List<Person>();
             Assignments = new List<Assignment>();
             Modules = new List<Module>();
-            //Modules.Add(new Module { Name = "TEST MODULE", Description = "Testing"});
+            Modules.Add(new Module { Name = "TEST MODULE", Description = "Testing"});
             Assignments.Add(new Assignment
             {
                 Name = "Test Assignment",

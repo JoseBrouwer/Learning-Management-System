@@ -130,6 +130,9 @@
 	  <MauiXaml Update="views\PersonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="views\person\PersonCourseModules.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="views\person\PersonCourses.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

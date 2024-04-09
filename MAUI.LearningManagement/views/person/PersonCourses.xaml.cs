@@ -17,9 +17,12 @@ public partial class PersonCourses : ContentPage
     }
     private void ModulesClicked(object sender, EventArgs e)
     {
-
+        var courseCode = (BindingContext as PersonCoursesViewModel)?.SelectedCourse?.Code;
+        if (courseCode != null) 
+        {
+            Shell.Current.GoToAsync($"//CourseModules?personId={personId}&courseCode={courseCode}");
+        }
     }
-
     private void AssignmentsClicked(object sender, EventArgs e)
     {
 
