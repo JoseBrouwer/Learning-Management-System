@@ -13,7 +13,10 @@ public partial class PersonView : ContentPage
     private void CoursesClicked(object sender, EventArgs e)
     {
         var personId = (BindingContext as PersonViewModel)?.SelectedPerson?.IntId;
-        Shell.Current.GoToAsync($"//PersonCourses?personId={personId}");
+        if(personId != null)
+        {
+            Shell.Current.GoToAsync($"//PersonCourses?personId={personId}");
+        }
     }
     private void BackClicked(object sender, EventArgs e)
     {
