@@ -23,6 +23,6 @@ public partial class AddEnrollmentDialog : ContentPage
     }
     private void BackClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//EditEnrollment");
+        Shell.Current.GoToAsync($"//EditEnrollment?courseCode={courseCode}");
     }
 }

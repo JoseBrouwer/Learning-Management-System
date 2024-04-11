@@ -56,6 +56,7 @@ namespace MAUI.LearningManagement.viewmodels
         public void Remove()
         {
             CourseService.Current.RemovePersonFromRoster(course, SelectedStudent);
+            PersonService.Current.DeleteCourse(SelectedStudent, course);
             Refresh();
         }
     }

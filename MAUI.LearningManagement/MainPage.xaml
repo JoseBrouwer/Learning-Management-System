@@ -7,7 +7,7 @@
         <VerticalStackLayout Padding="30,0" Spacing="25">
 
             <Button Text="Student View" Clicked="PersonViewClicked"/>
-            <Button Text="Create Student" Clicked="CreatePersonClicked"/>
+            <Button Text="Student Management Page" Clicked="CreatePersonClicked"/>
             <Button Text="Instructor View" Clicked="InstructorViewClicked"/>
 
         </VerticalStackLayout>

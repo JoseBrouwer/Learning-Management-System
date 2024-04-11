@@ -88,9 +88,9 @@ namespace LMS.Services {
         {
             students.Remove(studentToDelete);
         }
-        public void DeleteCourse(Course courseToDelete)
+        public void DeleteCourse(Person student, Course courseToDelete)
         {
-            courses.Remove(courseToDelete);
+            student?.Courses?.Remove(courseToDelete);
         }
         public bool IsFirstSubmission(Assignment assignment, Submission submission, int personId)
         {
