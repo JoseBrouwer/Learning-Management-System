@@ -70,7 +70,7 @@ namespace MAUI.LearningManagement.viewmodels
 
         public AssignmentDialogViewModel(string code, string name) 
         {
-            if (code == string.Empty || code == null || name == string.Empty || name == null)
+            if (code == string.Empty || code == null)
             {
                 course = new Course();
                 assignment = new Assignment();

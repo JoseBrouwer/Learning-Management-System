@@ -11,7 +11,7 @@ public partial class AssignmentDialog : ContentPage
     public AssignmentDialog()
 	{
 		InitializeComponent();
-        //BindingContext = new AssignmentDialogViewModel(courseCode);
+        //BindingContext = new AssignmentDialogViewModel(courseCode, assignmentName);
     }
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {

@@ -19,7 +19,7 @@ public partial class CourseAssignmentsView : ContentPage
     {
         if(courseCode != null)
         {
-            Shell.Current.GoToAsync($"//AssignmentDetail");
+            Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}");
         }
     }
     private void UpdateClicked(object sender, EventArgs e)
