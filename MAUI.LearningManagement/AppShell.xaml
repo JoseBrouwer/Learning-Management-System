@@ -86,5 +86,9 @@
         Title="Assignment Submission"
         ContentTemplate="{DataTemplate local3:SubmissionDialog}"
         Route="SubmissionDetail" />
+    <ShellContent
+        Title="Student Submissions"
+        ContentTemplate="{DataTemplate local2:AssignmentSubmissions}"
+        Route="Submissions" />
 
 </Shell>

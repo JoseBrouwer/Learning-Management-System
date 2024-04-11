@@ -19,6 +19,7 @@
 
         <Button Text="Add Assignment" Clicked="AddClicked"/>
         <Button Text="Update Assignment" Clicked="UpdateClicked"/>
+        <Button Text="View Submissions" Clicked="SubmissionsClicked"/>
         <Button Text="Remove Assignment" Clicked="RemoveClicked"/>
         <Button Text="Back" Clicked="BackClicked"/>
     </VerticalStackLayout>

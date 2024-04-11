@@ -21,6 +21,9 @@
     <MauiXaml Update="dialogs\SubmissionDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="views\AssignmentSubmissions.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="views\CourseAssignmentsView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

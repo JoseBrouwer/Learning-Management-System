@@ -24,9 +24,9 @@ namespace LMS.Models {
             Name = name;
             Classification = classification;
             Courses = new List<Course>();
-            Course newCourse = new Course { Code = "007", Name = "TEST", Description = "Testing..."};
-            CourseService.Current.Add(newCourse);
-            Courses.Add(newCourse);
+            //Course newCourse = new Course { Code = "007", Name = "TEST", Description = "Testing..."};
+            //CourseService.Current.Add(newCourse);
+            //Courses.Add(newCourse);
             Grades = grades;
             Id = Guid.NewGuid();
             Console.WriteLine("Person Created");

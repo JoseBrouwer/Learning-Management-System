@@ -25,9 +25,17 @@ public partial class CourseAssignmentsView : ContentPage
     private void UpdateClicked(object sender, EventArgs e)
     {
         var assignmentName = (BindingContext as CourseAssignmentsViewModel)?.SelectedAssignment?.Name;
-        if(courseCode != null) 
+        if(assignmentName != null) 
         {
             Shell.Current.GoToAsync($"//AssignmentDetail?courseCode={courseCode}&assignmentName={assignmentName}");
+        }
+    }
+    private void SubmissionsClicked(object sender, EventArgs e)
+    {
+        var assignmentName = (BindingContext as CourseAssignmentsViewModel)?.SelectedAssignment?.Name;
+        if (assignmentName != null)
+        {
+            Shell.Current.GoToAsync($"//Submissions?courseCode={courseCode}&assignmentName={assignmentName}");
         }
     }
     private void RemoveClicked(object sender, EventArgs e)
