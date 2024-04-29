@@ -18,6 +18,7 @@ namespace MAUI.LearningManagement.viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        private Assignment? assignment;
         private Submission? submission;
         public double Grade
         {
@@ -25,7 +26,16 @@ namespace MAUI.LearningManagement.viewmodels
             set { 
                 if (submission != null)
                 {
-                    submission.Grade = value;
+                    if((value > -1) && (value < assignment?.TotalAvailablePoints))
+                        submission.Grade = value;
+                    else if(value < -1)
+                    {
+                        submission.Grade = 0;
+                    }
+                    else
+                    {
+                        submission.Grade = assignment?.TotalAvailablePoints;
+                    }
                 }
             }
         }
@@ -36,7 +46,7 @@ namespace MAUI.LearningManagement.viewmodels
             else
             {
                 Course? course = CourseService.Current.Get(code);
-                Assignment? assignment = CourseService.Current.GetAssignment(course, assignmentName);
+                assignment = CourseService.Current.GetAssignment(course, assignmentName);
                 submission = CourseService.Current.GetSubmission(assignment, submitterId);
             }
         }
