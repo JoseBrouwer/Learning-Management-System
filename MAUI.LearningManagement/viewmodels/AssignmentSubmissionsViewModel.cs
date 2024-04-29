@@ -24,6 +24,10 @@ namespace MAUI.LearningManagement.viewmodels
         }
         private Course? course;
         private Assignment? assignment;
+        public Submission? SelectedSubmission
+        { 
+            get; set; 
+        }
         public AssignmentSubmissionsViewModel(string code, string name)
         {
             if (code == string.Empty || code == null

@@ -18,7 +18,7 @@ namespace LMS.models
         }
         public override string ToString()
         {
-            return $"\tID of submitter: {Id}\n\tTEXT: {Text}\n";
+            return $"\tID of submitter: {Id}\n\tTEXT: {Text}\n\tGRADE: {Grade}";
         }
     }
 }

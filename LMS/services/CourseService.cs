@@ -1,3 +1,4 @@
+using LMS.models;
 using LMS.Models;
 using System.Xml.Linq;
 
@@ -57,6 +58,10 @@ namespace LMS.Services
         public Assignment? GetAssignment(Course course, string name)
         {
             return course?.Assignments?.FirstOrDefault(a => a.Name == name);
+        }
+        public Submission? GetSubmission(Assignment assignment, int id)
+        {
+            return assignment?.Submissions?.FirstOrDefault(s => s.Id == id);
         }
         public IEnumerable<Course> GetByStudentId(Guid personId)
         {

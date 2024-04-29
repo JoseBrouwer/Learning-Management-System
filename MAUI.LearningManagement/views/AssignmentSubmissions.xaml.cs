@@ -19,7 +19,11 @@ public partial class AssignmentSubmissions : ContentPage
     }
     private void GradeClicked(object sender, EventArgs e)
     {
-        //IMPLEMENT
+        var submitterId = (BindingContext as AssignmentSubmissionsViewModel)?.SelectedSubmission?.Id;
+        if(submitterId != null)
+        {
+            Shell.Current.GoToAsync($"//GradeSubmission?courseCode={courseCode}&assignmentName={assignmentName}&submitterId={submitterId}");
+        }
     }
     private void BackClicked(object sender, EventArgs e)
     {

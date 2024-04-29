@@ -15,6 +15,9 @@
     <MauiXaml Update="dialogs\CourseDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="dialogs\GradeDialog.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="dialogs\ItemDialog.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
